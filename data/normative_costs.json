@@ -1,0 +1,852 @@
+{
+    "_meta": {
+        "source": "Приказ Минстроя России от 12.05.2025 N 281/пр",
+        "price_level": "01.01.2024",
+        "currency": "RUB",
+        "vat_included": false
+    },
+    "reconnaissance": {
+        "description": "Рекогносцировочное обследование (Таблица 12)",
+        "unit": "гектар",
+        "categories": {
+            "I": {
+                "up_to_5_ha": {
+                    "PZ1p": 6266,
+                    "PZ2p": 4475
+                },
+                "5_to_20_ha": {
+                    "PZ1p": 13126,
+                    "PZ2p": 3103
+                },
+                "20_to_50_ha": {
+                    "PZ1p": 34604,
+                    "PZ2p": 2029
+                },
+                "50_to_100_ha": {
+                    "PZ1p": 53697,
+                    "PZ2p": 1647
+                },
+                "over_100_ha": {
+                    "PZ1p": 98491,
+                    "PZ2p": 1199
+                }
+            },
+            "II": {
+                "up_to_5_ha": {
+                    "PZ1p": 7285,
+                    "PZ2p": 5204
+                },
+                "5_to_20_ha": {
+                    "PZ1p": 15264,
+                    "PZ2p": 3608
+                },
+                "20_to_50_ha": {
+                    "PZ1p": 40243,
+                    "PZ2p": 2359
+                },
+                "50_to_100_ha": {
+                    "PZ1p": 62444,
+                    "PZ2p": 1915
+                },
+                "over_100_ha": {
+                    "PZ1p": 114443,
+                    "PZ2p": 1395
+                }
+            },
+            "III": {
+                "up_to_5_ha": {
+                    "PZ1p": 10127,
+                    "PZ2p": 7233
+                },
+                "5_to_20_ha": {
+                    "PZ1p": 21218,
+                    "PZ2p": 5015
+                },
+                "20_to_50_ha": {
+                    "PZ1p": 55938,
+                    "PZ2p": 3279
+                },
+                "50_to_100_ha": {
+                    "PZ1p": 86790,
+                    "PZ2p": 2662
+                },
+                "over_100_ha": {
+                    "PZ1p": 159081,
+                    "PZ2p": 1939
+                }
+            }
+        }
+    },
+    "drilling_core": {
+        "description": "Бурение колонковым способом (Таблица 14)",
+        "unit": "погонный метр",
+        "diameter_up_to_160mm": {
+            "depth_up_to_15m": {
+                "I": 2858,
+                "II": 3237,
+                "III": 3300,
+                "IV": 4125,
+                "V": 4585,
+                "VI": 5764,
+                "VII": 7792,
+                "VIII": 10254
+            },
+            "depth_15_to_25m": {
+                "I": 2098,
+                "II": 2756,
+                "III": 2914,
+                "IV": 3784,
+                "V": 4395,
+                "VI": 5212,
+                "VII": 7640,
+                "VIII": 10786
+            },
+            "depth_25_to_50m": {
+                "I": 2117,
+                "II": 2535,
+                "III": 3085,
+                "IV": 4042,
+                "V": 5022,
+                "VI": 6600,
+                "VII": 8931,
+                "VIII": 13027
+            },
+            "depth_50_to_100m": {
+                "II": 2763,
+                "III": 4453,
+                "IV": 4934,
+                "V": 6237,
+                "VI": 8385
+            }
+        },
+        "diameter_up_to_76mm": {
+            "depth_up_to_25m": {
+                "IX": 22824
+            },
+            "depth_25_to_100m": {
+                "IX": 23324
+            }
+        },
+        "diameter_76_to_122mm": {
+            "depth_up_to_25m": {
+                "IX": 29921
+            },
+            "depth_25_to_100m": {
+                "IX": 31466
+            }
+        },
+        "correction_coefficients": {
+            "K4_no_documentation": {
+                "I_II": 0.55,
+                "III_IV": 0.65,
+                "V_VII": 0.75,
+                "VIII_IX": 0.85
+            }
+        }
+    },
+    "drilling_core_ssk": {
+        "description": "Бурение колонковым способом с ССК (Таблица 16)",
+        "unit": "погонный метр",
+        "diameter_up_to_76mm": {
+            "depth_up_to_100m": {
+                "I_monolith": 8529,
+                "I_medium": 9001,
+                "I_fractured": 9943,
+                "II_monolith": 16085,
+                "II_medium": 16794,
+                "II_fractured": 18210
+            }
+        },
+        "diameter_76_to_122mm": {
+            "depth_up_to_100m": {
+                "I_monolith": 10403,
+                "I_medium": 10550,
+                "I_fractured": 10786,
+                "II_monolith": 17165,
+                "II_medium": 18287,
+                "II_fractured": 19526
+            }
+        }
+    },
+    "drilling_percussion": {
+        "description": "Бурение ударно-канатным способом (Таблица 18)",
+        "unit": "погонный метр",
+        "diameter_up_to_127mm": {
+            "depth_up_to_20m": {
+                "I": 2617,
+                "II": 3431,
+                "III": 4692,
+                "IV": 8490,
+                "V": 15385,
+                "VI": 21976
+            },
+            "depth_20_to_40m": {
+                "I": 2154,
+                "II": 2984,
+                "III": 4213,
+                "IV": 8011,
+                "V": 14986,
+                "VI": 21545
+            }
+        },
+        "diameter_127_to_168mm": {
+            "depth_up_to_20m": {
+                "I": 2889,
+                "II": 3862,
+                "III": 5586,
+                "IV": 10445,
+                "V": 19215,
+                "VI": 33083
+            },
+            "depth_20_to_40m": {
+                "I": 2426,
+                "II": 3559,
+                "III": 5314,
+                "IV": 10447,
+                "V": 19486,
+                "VI": 33945
+            }
+        },
+        "diameter_168_to_273mm": {
+            "depth_up_to_20m": {
+                "I": 2984,
+                "II": 3990,
+                "III": 5713,
+                "IV": 11028,
+                "V": 22055,
+                "VI": 38733
+            },
+            "depth_20_to_40m": {
+                "I": 2633,
+                "II": 3926,
+                "III": 5586,
+                "IV": 10948,
+                "V": 22295,
+                "VI": 38781
+            }
+        },
+        "correction_coefficients": {
+            "K5_no_documentation": 0.8
+        }
+    },
+    "drilling_vibration": {
+        "description": "Бурение вибрационным способом (Таблица 20)",
+        "unit": "погонный метр",
+        "diameter_up_to_146mm": {
+            "depth_up_to_10m": {
+                "I": 1483,
+                "II": 1787,
+                "III": 2560,
+                "IV": 3384
+            },
+            "depth_over_10m": {
+                "I": 2256,
+                "II": 2636,
+                "III": 3472,
+                "IV": 5095
+            }
+        },
+        "correction_coefficients": {
+            "K6_no_documentation": 0.8
+        }
+    },
+    "drilling_auger": {
+        "description": "Бурение шнековым способом (Таблица 22)",
+        "unit": "погонный метр",
+        "diameter_up_to_160mm": {
+            "depth_up_to_10m": {
+                "I": 2633,
+                "II": 2777,
+                "III": 3000,
+                "IV": 3846,
+                "V": 4054,
+                "VI": 4644
+            },
+            "depth_10_to_20m": {
+                "I": 2011,
+                "II": 2250,
+                "III": 2474,
+                "IV": 3224,
+                "V": 3527,
+                "VI": 4213
+            },
+            "depth_over_20m": {
+                "I": 2537,
+                "II": 2490,
+                "III": 2713,
+                "IV": 3383,
+                "V": 3766,
+                "VI": 4532
+            }
+        },
+        "diameter_over_160mm": {
+            "depth_up_to_10m": {
+                "I": 2952,
+                "II": 3144,
+                "III": 3575,
+                "IV": 4532,
+                "V": 4820,
+                "VI": 5570
+            },
+            "depth_10_to_20m": {
+                "I": 2490,
+                "II": 2665,
+                "III": 2984,
+                "IV": 3942,
+                "V": 4341,
+                "VI": 5235
+            },
+            "depth_over_20m": {
+                "I": 2905,
+                "II": 3080,
+                "III": 3383,
+                "IV": 4245,
+                "V": 4756,
+                "VI": 5745
+            }
+        },
+        "correction_coefficients": {
+            "K7_no_documentation": {
+                "I_IV": 0.4,
+                "V_VI": 0.6
+            }
+        }
+    },
+    "drilling_manual": {
+        "description": "Бурение ручным способом (Таблица 24)",
+        "unit": "погонный метр",
+        "diameter_up_to_89mm": {
+            "depth_up_to_10m": {
+                "I": 2603,
+                "II": 3322,
+                "III": 4983,
+                "IV": 14267,
+                "V": 34893
+            }
+        },
+        "correction_coefficients": {
+            "K8_no_documentation": 0.8
+        }
+    },
+    "casing": {
+        "description": "Крепление обсадными трубами (Таблица 25)",
+        "unit": "погонный метр",
+        "base_cost": 1536
+    },
+    "hydrogeological": {
+        "description": "Гидрогеологические исследования (Таблица 26)",
+        "unit": "одно исследование",
+        "first_horizon": 983
+    },
+    "pit_excavation": {
+        "description": "Проходка закопушек (Таблица 28)",
+        "unit": "одна закопушка",
+        "category_I": {
+            "soil_I_II": 2617,
+            "soil_III": 3793,
+            "soil_IV_V": 6367
+        },
+        "category_II": {
+            "soil_I_II": 3300,
+            "soil_III": 4783,
+            "soil_IV_V": 6766
+        },
+        "category_III": {
+            "soil_I_II": 4391,
+            "soil_III": 6365,
+            "soil_IV_V": 9005
+        }
+    },
+    "trench_opening": {
+        "description": "Вскрытие покрытий для шурфов (Таблица 29)",
+        "unit": "куб.м",
+        "base_cost": 85300
+    },
+    "trench_excavation": {
+        "description": "Проходка шурфов (Таблица 30)",
+        "unit": "куб.м",
+        "depth_up_to_2_5m": {
+            "I": 6710,
+            "II": 10895,
+            "III": 18023,
+            "IV": 28737
+        },
+        "depth_2_5_to_5m": {
+            "I": 9552,
+            "II": 14242,
+            "III": 23558,
+            "IV": 37562
+        },
+        "depth_over_5m": {
+            "I": 13605,
+            "II": 19105,
+            "III": 26804,
+            "IV": 38788
+        }
+    },
+    "trench_shoring": {
+        "description": "Крепление стенок шурфов (Таблица 31)",
+        "unit": "метр шурфа",
+        "depth_up_to_2_5m": 5291,
+        "depth_2_5_to_5m": 5525,
+        "depth_over_5m": 10711
+    },
+    "trench_dewatering": {
+        "description": "Водоотлив из шурфов (Таблица 32)",
+        "unit": "метр шурфа",
+        "depth_up_to_2_5m": {
+            "I": 2329,
+            "II": 3782,
+            "III": 6256,
+            "IV": 9976
+        },
+        "depth_2_5_to_5m": {
+            "I": 2600,
+            "II": 3877,
+            "III": 6413,
+            "IV": 10225
+        },
+        "depth_over_5m": {
+            "I": 3703,
+            "II": 5201,
+            "III": 7297,
+            "IV": 10559
+        }
+    },
+    "cameral_drilling": {
+        "description": "Камеральная обработка бурения (Таблица 33)",
+        "unit": "погонный метр / шт",
+        "boreholes": {
+            "complexity_I": 250,
+            "complexity_II": 342,
+            "complexity_III": 434
+        },
+        "pits": 1252,
+        "trenches_up_to_5m": 2504,
+        "trenches_over_5m": 3339
+    },
+    "pumping_trial": {
+        "description": "Пробная откачка (Таблица 34)",
+        "mounting": {
+            "depth_up_to_15m": 27465,
+            "depth_over_15m": 41198
+        },
+        "pumping_per_hour": 3573
+    },
+    "pumping_single": {
+        "description": "Опытная одиночная откачка (Таблица 35)",
+        "mounting": {
+            "depth_up_to_15m": 41785,
+            "depth_over_15m": 67822
+        },
+        "pumping_per_hour": 5134,
+        "cameral": 16696
+    },
+    "pumping_cluster": {
+        "description": "Кустовая откачка (Таблица 37)",
+        "mounting": {
+            "depth_up_to_15m": 41785,
+            "depth_over_15m": 67822
+        },
+        "pumping_per_hour": 5134,
+        "observation_per_hour": 1562,
+        "cameral": 50088
+    },
+    "injection_single": {
+        "description": "Опытный налив (Таблица 39)",
+        "mounting_low_flow": {
+            "depth_up_to_15m": 9825,
+            "depth_over_15m": 14737
+        },
+        "mounting_high_flow": {
+            "depth_up_to_15m": 21117,
+            "depth_over_15m": 31676
+        },
+        "injection_per_hour_no_pump": 4955,
+        "injection_per_hour_with_pump": 5134,
+        "cameral_borehole": 16696,
+        "cameral_trench": 10435
+    },
+    "static_sounding": {
+        "description": "Статическое зондирование (Таблица 43)",
+        "unit": "погонный метр",
+        "preliminary_drilling": 902,
+        "depth_up_to_10m": 3006,
+        "depth_10_to_15m": 3138,
+        "depth_15_to_20m": 3592,
+        "depth_20_to_25m": 3872,
+        "depth_25_to_30m": 4021,
+        "depth_30_to_35m": 4092,
+        "depth_35_to_40m": 4188,
+        "depth_over_40m": 4495,
+        "correction_coefficients": {
+            "K9_dense_soils": 1.2,
+            "K10_distance_over_200m": 1.1,
+            "K11_electrocarotage": 1.05,
+            "K12_lateral_pressure": 1.2
+        },
+        "cameral_per_meter": 173
+    },
+    "static_sounding_special": {
+        "description": "Специальные методы зондирования (Таблица 44)",
+        "unit": "одно испытание",
+        "dissipation_up_to_10min": 3205,
+        "dissipation_10_to_15min": 4807,
+        "relaxation_up_to_10min": 3205,
+        "relaxation_10_to_15min": 4807,
+        "temperature_up_to_15min": 4886,
+        "dissipation_with_temp": 5414,
+        "relaxation_with_temp": 5414,
+        "seismic": 2612,
+        "cameral": {
+            "continuous": 173,
+            "dissipation": 2087,
+            "relaxation": 2087,
+            "temperature": 1044,
+            "seismic": 2087
+        }
+    },
+    "stamp_test": {
+        "description": "Испытания штампом (Таблица 78)",
+        "unit": "одно испытание",
+        "depth_up_to_5m": {
+            "pressure_up_to_0_3": {
+                "I": 38821,
+                "II": 53155,
+                "III": 68734
+            },
+            "pressure_0_3_to_0_5": {
+                "I": 49489,
+                "II": 57737,
+                "III": 87622
+            },
+            "pressure_over_0_5": {
+                "I": 54988,
+                "II": 65985,
+                "III": 98978
+            }
+        },
+        "depth_5_to_10m": {
+            "pressure_up_to_0_3": {
+                "I": 43990,
+                "II": 60232,
+                "III": 77886
+            },
+            "pressure_0_3_to_0_5": {
+                "I": 56078,
+                "II": 65424,
+                "III": 99288
+            },
+            "pressure_over_0_5": {
+                "I": 62309,
+                "II": 74771,
+                "III": 112156
+            }
+        },
+        "depth_over_10m": {
+            "pressure_up_to_0_3": {
+                "I": 51762,
+                "II": 70873,
+                "III": 91646
+            },
+            "pressure_0_3_to_0_5": {
+                "I": 65985,
+                "II": 76983,
+                "III": 116829
+            },
+            "pressure_over_0_5": {
+                "I": 73317,
+                "II": 87980,
+                "III": 131970
+            }
+        },
+        "cameral": {
+            "I": 4174,
+            "II": 6261,
+            "III": 8348
+        }
+    },
+    "pressuremeter": {
+        "description": "Испытания прессиометром (Таблица 81)",
+        "unit": "одно испытание",
+        "depth_up_to_10m": {
+            "I": 14956,
+            "II": 19898,
+            "III": 25697
+        },
+        "depth_10_to_20m": {
+            "I": 17659,
+            "II": 23493,
+            "III": 30340
+        },
+        "depth_20_to_30m": {
+            "I": 21107,
+            "II": 28080,
+            "III": 36264
+        },
+        "depth_30_to_40m": {
+            "I": 24461,
+            "II": 32543,
+            "III": 42028
+        },
+        "depth_40_to_50m": {
+            "I": 28795,
+            "II": 38308,
+            "III": 49472
+        },
+        "depth_50_to_60m": {
+            "I": 32786,
+            "II": 43619,
+            "III": 56331
+        },
+        "cameral": 2087
+    },
+    "vane_shear": {
+        "description": "Вращательный срез (Таблица 83)",
+        "unit": "одно испытание",
+        "in_massif": 3829,
+        "borehole_up_to_5m": 8151,
+        "borehole_5_to_10m": 13682,
+        "borehole_10_to_20m": 15755,
+        "cameral": 1044
+    },
+    "large_shear": {
+        "description": "Срез в крупногабаритной установке (Таблица 85)",
+        "unit": "одно испытание",
+        "undisturbed": {
+            "consolidated_drained": 72743,
+            "unconsolidated": 47478
+        },
+        "disturbed": {
+            "consolidated_drained": 76408,
+            "unconsolidated": 51506
+        },
+        "cameral": 3965
+    },
+    "lab_physical_prep": {
+        "description": "Подготовка образцов (Таблица 56)",
+        "unit": "один образец",
+        "reception_registration": 459,
+        "sampling": 335,
+        "description": 141
+    },
+    "lab_physical": {
+        "description": "Физические свойства грунтов (Таблица 57)",
+        "unit": "одно определение",
+        "moisture_drying": 229,
+        "hygroscopic_moisture": 247,
+        "density_weighing": 653,
+        "particle_density": 600,
+        "slaking": 1005,
+        "carbonate_content": 670,
+        "carbonate_hcl_test": 71,
+        "organic_content": 370,
+        "grain_size_dry_sieve": 670,
+        "grain_size_wet_sieve_simple": 917,
+        "grain_size_wet_sieve_full": 1835,
+        "grain_size_pipette": 1993,
+        "grain_size_hydrometer": 1676,
+        "microaggregate_hydrometer": 1852,
+        "angle_of_repose": 723,
+        "frost_heave": 4546,
+        "density_ring_clay": 529,
+        "atterberg_limits_natural": 1676,
+        "atterberg_limits_dry": 1358,
+        "swelling_free": 723,
+        "shrinkage_free": 388,
+        "permeability_clay": 8132,
+        "proctor_2_3percent": 16705,
+        "proctor_1_2percent": 13759,
+        "solubility_rock": 3452,
+        "density_ring_sand": 512,
+        "density_loose_dense": 653,
+        "permeability_sand_steady_low": 2203,
+        "permeability_sand_steady_high": 3269,
+        "permeability_sand_unsteady_low": 2221,
+        "permeability_sand_unsteady_high": 3198,
+        "abrasion": 13689,
+        "peat_decomposition": 4861
+    },
+    "lab_compression": {
+        "description": "Компрессионные испытания (Таблица 58)",
+        "unit": "одно определение",
+        "sand": 5452,
+        "clay_lt_0_25": 7357,
+        "clay_gt_0_25": 7901,
+        "organic": 10441,
+        "clay_with_unload": 10441,
+        "anisotropy": 13768,
+        "consolidation": 5996,
+        "collapse_one_curve": 7266,
+        "collapse_two_curves": 10593,
+        "collapse_4_5_curves": 21711,
+        "collapse_combined": 7266,
+        "swelling_under_load": 29931,
+        "frost_heave_degree": 7600,
+        "overconsolidation": 9415
+    },
+    "lab_shear": {
+        "description": "Прямой срез (Таблица 59)",
+        "unit": "одно определение",
+        "sand": 8520,
+        "sandy_loam": 8520,
+        "loam_lt_12": 9091,
+        "loam_12_to_17": 9172,
+        "clay_17_to_30": 9293,
+        "clay_30_to_40": 9656,
+        "clay_gt_40": 12149,
+        "organic": 13360
+    },
+    "lab_triaxial": {
+        "description": "Трёхосные испытания (Таблица 60)",
+        "unit": "одно определение",
+        "strength": {
+            "UU_clay_organic": 14691,
+            "CD_sand": 13780,
+            "CU_sand": 13667,
+            "CD_sandy_loam": 16256,
+            "CU_sandy_loam": 16086,
+            "CD_loam_lt12_lt05": 21017,
+            "CU_loam_lt12_lt05": 20677,
+            "CD_loam_lt12_gt05": 18466,
+            "CU_loam_lt12_gt05": 17843,
+            "CD_loam_gt12_lt05": 17937,
+            "CU_loam_gt12_lt05": 17030,
+            "CD_loam_gt12_gt05": 24417,
+            "CU_loam_gt12_gt05": 22264,
+            "CD_clay_lt025": 19410,
+            "CU_clay_lt025": 17994,
+            "CD_clay_025_05": 23793,
+            "CU_clay_025_05": 20818,
+            "CD_clay_gt05": 27252,
+            "CU_clay_gt05": 22717,
+            "CD_organic": 24417,
+            "CU_organic": 22490
+        },
+        "deformability": {
+            "CD_sand": 4593,
+            "CD_sandy_loam": 5419,
+            "CD_loam_lt12_lt05": 7006,
+            "CD_loam_lt12_gt05": 6155,
+            "CD_loam_gt12_lt05": 5979,
+            "CD_loam_gt12_gt05": 8139,
+            "CD_clay_lt025": 6470,
+            "CD_clay_025_05": 7931,
+            "CD_clay_gt05": 9084,
+            "CD_organic": 8139
+        }
+    },
+    "lab_rock": {
+        "description": "Испытания скальных грунтов (Таблица 61)",
+        "unit": "одно определение",
+        "uniaxial_compression": 3029,
+        "point_load": 1800,
+        "indenter": 1352
+    },
+    "lab_cameral": {
+        "description": "Камеральная обработка лаборатории (Таблица 62)",
+        "unit": "один образец",
+        "physical": {
+            "sand": 320,
+            "clay": 381,
+            "rock": 316,
+            "peat": 358
+        },
+        "mechanical": {
+            "sand": 693,
+            "clay": 730,
+            "rock": 632,
+            "peat": 533
+        }
+    },
+    "lab_water": {
+        "description": "Анализ воды и вытяжек (Таблица 63)",
+        "unit": "одно определение",
+        "water_full": 11731,
+        "water_short": 8825,
+        "extract_full": 9786,
+        "extract_short": 7478,
+        "corrosion_electrical": 2726,
+        "cameral_water": 385,
+        "cameral_extract": 352
+    },
+    "technical_report": {
+        "description": "Технический отчёт (Таблица 65)",
+        "unit": "один отчёт",
+        "complexity_I": {
+            "up_to_20k": 111747,
+            "50k": 165377,
+            "100k": 222462,
+            "250k": 329226,
+            "500k": 442869,
+            "1000k": 595739,
+            "over_1500k": 708578
+        },
+        "complexity_II": {
+            "up_to_20k": 134685,
+            "50k": 203793,
+            "100k": 278776,
+            "250k": 421816,
+            "500k": 577018,
+            "1000k": 789323,
+            "2000k": 1079743,
+            "over_3500k": 1390508
+        },
+        "complexity_III": {
+            "up_to_20k": 155558,
+            "50k": 233356,
+            "100k": 317143,
+            "250k": 475755,
+            "500k": 646576,
+            "1000k": 878729,
+            "2000k": 1194239,
+            "5000k": 1791510,
+            "over_10000k": 2434755
+        }
+    },
+    "program": {
+        "description": "Программа ИГИ для сложности II (Таблица 66)",
+        "unit": "одна программа",
+        "area_up_to_1ha": {
+            "depth_up_to_5m": 20098,
+            "depth_5_to_10m": 51681,
+            "depth_10_to_15m": 80393,
+            "depth_15_to_25m": 117718,
+            "depth_25_to_50m": 149301,
+            "depth_50_to_75m": 183755,
+            "depth_over_75m": 223952
+        },
+        "area_1_to_10ha": {
+            "depth_up_to_5m": 45939,
+            "depth_5_to_10m": 97620,
+            "depth_10_to_15m": 143559,
+            "depth_15_to_25m": 192369,
+            "depth_25_to_50m": 238308,
+            "depth_50_to_75m": 281375,
+            "depth_over_75m": 338799
+        },
+        "area_10_to_100ha": {
+            "depth_up_to_5m": 109105,
+            "depth_5_to_10m": 157915,
+            "depth_10_to_15m": 200982,
+            "depth_15_to_25m": 249792,
+            "depth_25_to_50m": 301473,
+            "depth_50_to_75m": 353155,
+            "depth_over_75m": 447903
+        },
+        "area_over_100ha": {
+            "depth_up_to_5m": 215338,
+            "depth_5_to_10m": 244050,
+            "depth_10_to_15m": 272762,
+            "depth_15_to_25m": 301473,
+            "depth_25_to_50m": 338799,
+            "depth_50_to_75m": 378995,
+            "depth_over_75m": 559879
+        },
+        "complexity_coefficients": {
+            "I": 0.85,
+            "II": 1.0,
+            "III": 1.15
+        }
+    }
+}

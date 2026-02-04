@@ -1,0 +1,891 @@
+{
+  "_meta": {
+    "source": "Приказ Минстроя России от 12.05.2025 N 281/пр",
+    "price_level": "01.01.2024"
+  },
+  "categories": {
+    "field": {
+      "name": "Полевые работы",
+      "name_en": "Field works",
+      "groups": {
+        "reconnaissance": "Рекогносцировочное обследование",
+        "drilling": "Проходка инженерно-геологических выработок",
+        "filtration": "Опытно-фильтрационные работы",
+        "field_tests": "Полевые испытания грунтов"
+      }
+    },
+    "laboratory": {
+      "name": "Лабораторные работы",
+      "name_en": "Laboratory works",
+      "groups": {
+        "soil_properties": "Определение свойств грунтов",
+        "water_analysis": "Анализ подземных и поверхностных вод",
+        "corrosion": "Коррозионная агрессивность грунтов"
+      }
+    },
+    "office": {
+      "name": "Камеральные работы",
+      "name_en": "Office works",
+      "groups": {
+        "cameral_drilling": "Камеральная обработка бурения",
+        "program": "Составление программы ИГИ",
+        "report": "Составление технического отчёта"
+      }
+    }
+  },
+  "work_types": [
+    {
+      "id": "recon_cat1_5ha",
+      "code": "01.01.01",
+      "name": "Рекогносцировочное обследование, категория I, до 5 га",
+      "unit": "га",
+      "category": "field",
+      "group": "reconnaissance",
+      "table_ref": "Таблица 12",
+      "cost_key": "reconnaissance.categories.I.up_to_5_ha"
+    },
+    {
+      "id": "recon_cat1_20ha",
+      "code": "01.01.02",
+      "name": "Рекогносцировочное обследование, категория I, 5-20 га",
+      "unit": "га",
+      "category": "field",
+      "group": "reconnaissance",
+      "table_ref": "Таблица 12",
+      "cost_key": "reconnaissance.categories.I.5_to_20_ha"
+    },
+    {
+      "id": "recon_cat1_50ha",
+      "code": "01.01.03",
+      "name": "Рекогносцировочное обследование, категория I, 20-50 га",
+      "unit": "га",
+      "category": "field",
+      "group": "reconnaissance",
+      "table_ref": "Таблица 12",
+      "cost_key": "reconnaissance.categories.I.20_to_50_ha"
+    },
+    {
+      "id": "recon_cat2_5ha",
+      "code": "01.02.01",
+      "name": "Рекогносцировочное обследование, категория II, до 5 га",
+      "unit": "га",
+      "category": "field",
+      "group": "reconnaissance",
+      "table_ref": "Таблица 12",
+      "cost_key": "reconnaissance.categories.II.up_to_5_ha"
+    },
+    {
+      "id": "recon_cat3_5ha",
+      "code": "01.03.01",
+      "name": "Рекогносцировочное обследование, категория III, до 5 га",
+      "unit": "га",
+      "category": "field",
+      "group": "reconnaissance",
+      "table_ref": "Таблица 12",
+      "cost_key": "reconnaissance.categories.III.up_to_5_ha"
+    },
+    {
+      "id": "drill_core_15m_cat1",
+      "code": "02.01.01",
+      "name": "Бурение колонковое ⌀160 мм, до 15 м, грунты I категории",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 14",
+      "base_cost": 2858
+    },
+    {
+      "id": "drill_core_15m_cat2",
+      "code": "02.01.02",
+      "name": "Бурение колонковое ⌀160 мм, до 15 м, грунты II категории",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 14",
+      "base_cost": 3237
+    },
+    {
+      "id": "drill_core_15m_cat3",
+      "code": "02.01.03",
+      "name": "Бурение колонковое ⌀160 мм, до 15 м, грунты III категории",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 14",
+      "base_cost": 3300
+    },
+    {
+      "id": "drill_core_15m_cat4",
+      "code": "02.01.04",
+      "name": "Бурение колонковое ⌀160 мм, до 15 м, грунты IV категории",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 14",
+      "base_cost": 4125
+    },
+    {
+      "id": "drill_core_15m_cat5",
+      "code": "02.01.05",
+      "name": "Бурение колонковое ⌀160 мм, до 15 м, грунты V категории",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 14",
+      "base_cost": 4585
+    },
+    {
+      "id": "drill_core_25m_cat2",
+      "code": "02.02.02",
+      "name": "Бурение колонковое ⌀160 мм, 15-25 м, грунты II категории",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 14",
+      "base_cost": 2756
+    },
+    {
+      "id": "drill_core_25m_cat3",
+      "code": "02.02.03",
+      "name": "Бурение колонковое ⌀160 мм, 15-25 м, грунты III категории",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 14",
+      "base_cost": 2914
+    },
+    {
+      "id": "drill_core_50m_cat2",
+      "code": "02.03.02",
+      "name": "Бурение колонковое ⌀160 мм, 25-50 м, грунты II категории",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 14",
+      "base_cost": 2535
+    },
+    {
+      "id": "drill_core_50m_cat3",
+      "code": "02.03.03",
+      "name": "Бурение колонковое ⌀160 мм, 25-50 м, грунты III категории",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 14",
+      "base_cost": 3085
+    },
+    {
+      "id": "drill_auger_10m_cat2",
+      "code": "02.10.02",
+      "name": "Бурение шнековое ⌀160 мм, до 10 м, грунты II категории",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 22",
+      "base_cost": 2777
+    },
+    {
+      "id": "drill_auger_10m_cat3",
+      "code": "02.10.03",
+      "name": "Бурение шнековое ⌀160 мм, до 10 м, грунты III категории",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 22",
+      "base_cost": 3000
+    },
+    {
+      "id": "drill_auger_20m_cat2",
+      "code": "02.11.02",
+      "name": "Бурение шнековое ⌀160 мм, 10-20 м, грунты II категории",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 22",
+      "base_cost": 2250
+    },
+    {
+      "id": "pit_excavation",
+      "code": "02.20",
+      "name": "Проходка закопушек",
+      "unit": "шт",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 28",
+      "base_cost": 2617
+    },
+    {
+      "id": "trench_2_5m_cat2",
+      "code": "02.21.02",
+      "name": "Проходка шурфов до 2,5 м, грунты II категории",
+      "unit": "м³",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 30",
+      "base_cost": 10895
+    },
+    {
+      "id": "trench_2_5m_cat3",
+      "code": "02.21.03",
+      "name": "Проходка шурфов до 2,5 м, грунты III категории",
+      "unit": "м³",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 30",
+      "base_cost": 18023
+    },
+    {
+      "id": "casing_install",
+      "code": "02.30",
+      "name": "Крепление обсадными трубами",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 25",
+      "base_cost": 1536,
+      "note": "Стоимость труб не включена (п.324)"
+    },
+    {
+      "id": "hydrogeo_observation",
+      "code": "02.40",
+      "name": "Гидрогеологические наблюдения в скважине (первый водоносный горизонт)",
+      "unit": "скв",
+      "category": "field",
+      "group": "drilling",
+      "table_ref": "Таблица 26",
+      "base_cost": 2485,
+      "note": "Замер УПВ, УГВ, отбор проб воды п.67"
+    },
+    {
+      "id": "pumping_trial_15m",
+      "code": "03.01",
+      "name": "Пробная откачка, глубина до 15 м",
+      "unit": "опыт",
+      "category": "field",
+      "group": "filtration",
+      "table_ref": "Таблица 34",
+      "base_cost": 27465
+    },
+    {
+      "id": "pumping_single_15m",
+      "code": "03.02",
+      "name": "Опытная одиночная откачка, глубина до 15 м",
+      "unit": "опыт",
+      "category": "field",
+      "group": "filtration",
+      "table_ref": "Таблица 35",
+      "base_cost": 41785,
+      "cameral_cost": 16696
+    },
+    {
+      "id": "pumping_cluster_15m",
+      "code": "03.03",
+      "name": "Опытная кустовая откачка, глубина до 15 м",
+      "unit": "опыт",
+      "category": "field",
+      "group": "filtration",
+      "table_ref": "Таблица 37",
+      "base_cost": 41785,
+      "cameral_cost": 50088
+    },
+    {
+      "id": "injection_borehole",
+      "code": "03.10",
+      "name": "Опытный налив в скважину",
+      "unit": "опыт",
+      "category": "field",
+      "group": "filtration",
+      "table_ref": "Таблица 39",
+      "base_cost": 9825,
+      "cameral_cost": 16696
+    },
+    {
+      "id": "static_sounding_10m",
+      "code": "04.01.01",
+      "name": "Статическое зондирование до 10 м",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "field_tests",
+      "table_ref": "Таблица 43",
+      "base_cost": 3006,
+      "cameral_cost": 173
+    },
+    {
+      "id": "static_sounding_15m",
+      "code": "04.01.02",
+      "name": "Статическое зондирование 10-15 м",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "field_tests",
+      "table_ref": "Таблица 43",
+      "base_cost": 3138,
+      "cameral_cost": 173
+    },
+    {
+      "id": "static_sounding_20m",
+      "code": "04.01.03",
+      "name": "Статическое зондирование 15-20 м",
+      "unit": "п.м.",
+      "category": "field",
+      "group": "field_tests",
+      "table_ref": "Таблица 43",
+      "base_cost": 3592,
+      "cameral_cost": 173
+    },
+    {
+      "id": "stamp_test_5m_cat2",
+      "code": "04.10.02",
+      "name": "Испытания штампом до 5 м, грунты II категории, P≤0.3 МПа",
+      "unit": "опыт",
+      "category": "field",
+      "group": "field_tests",
+      "table_ref": "Таблица 78",
+      "base_cost": 53155,
+      "cameral_cost": 6261
+    },
+    {
+      "id": "stamp_test_5m_cat3",
+      "code": "04.10.03",
+      "name": "Испытания штампом до 5 м, грунты III категории, P≤0.3 МПа",
+      "unit": "опыт",
+      "category": "field",
+      "group": "field_tests",
+      "table_ref": "Таблица 78",
+      "base_cost": 68734,
+      "cameral_cost": 8348
+    },
+    {
+      "id": "pressuremeter_10m_cat2",
+      "code": "04.20.02",
+      "name": "Прессиометрические испытания до 10 м, грунты II категории",
+      "unit": "опыт",
+      "category": "field",
+      "group": "field_tests",
+      "table_ref": "Таблица 81",
+      "base_cost": 19898,
+      "cameral_cost": 2087
+    },
+    {
+      "id": "vane_shear_massif",
+      "code": "04.30.01",
+      "name": "Вращательный срез в массиве грунта",
+      "unit": "опыт",
+      "category": "field",
+      "group": "field_tests",
+      "table_ref": "Таблица 83",
+      "base_cost": 3829,
+      "cameral_cost": 1044
+    },
+    {
+      "id": "vane_shear_5m",
+      "code": "04.30.02",
+      "name": "Вращательный срез в скважине до 5 м",
+      "unit": "опыт",
+      "category": "field",
+      "group": "field_tests",
+      "table_ref": "Таблица 83",
+      "base_cost": 8151,
+      "cameral_cost": 1044
+    },
+    {
+      "id": "lab_sample_prep",
+      "code": "05.00.01",
+      "name": "Приёмка, регистрация и консервация образца грунта",
+      "unit": "образец",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 56",
+      "base_cost": 459
+    },
+    {
+      "id": "lab_sample_selection",
+      "code": "05.00.02",
+      "name": "Отбор проб из образца грунта",
+      "unit": "образец",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 56",
+      "base_cost": 335
+    },
+    {
+      "id": "lab_sample_description",
+      "code": "05.00.03",
+      "name": "Описание образца грунта",
+      "unit": "образец",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 56",
+      "base_cost": 141
+    },
+    {
+      "id": "lab_moisture",
+      "code": "05.01.01",
+      "name": "Определение влажности методом высушивания",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 229
+    },
+    {
+      "id": "lab_moisture_hygro",
+      "code": "05.01.02",
+      "name": "Определение гигроскопической влажности",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 247
+    },
+    {
+      "id": "lab_density_weight",
+      "code": "05.02.01",
+      "name": "Определение плотности методом взвешивания в воде",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 653
+    },
+    {
+      "id": "lab_density_ring",
+      "code": "05.02.02",
+      "name": "Определение плотности глинистых методом режущего кольца",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 529
+    },
+    {
+      "id": "lab_particle_density",
+      "code": "05.03",
+      "name": "Определение плотности частиц пикнометрическим методом",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 600
+    },
+    {
+      "id": "lab_atterberg",
+      "code": "05.04.01",
+      "name": "Определение границ пластичности (природная влажность)",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 1676
+    },
+    {
+      "id": "lab_atterberg_dry",
+      "code": "05.04.02",
+      "name": "Определение границ пластичности (воздушно-сухое)",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 1358
+    },
+    {
+      "id": "lab_grain_dry_sieve",
+      "code": "05.05.01",
+      "name": "Гранулометрический состав ситовым методом без промывки",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 670
+    },
+    {
+      "id": "lab_grain_wet_sieve",
+      "code": "05.05.02",
+      "name": "Гранулометрический состав ситовым методом с промывкой (полный)",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 1835
+    },
+    {
+      "id": "lab_grain_hydrometer",
+      "code": "05.05.03",
+      "name": "Гранулометрический состав ареометрическим методом",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 1676
+    },
+    {
+      "id": "lab_organic_content",
+      "code": "05.06",
+      "name": "Содержание органических веществ методом прокаливания",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 370
+    },
+    {
+      "id": "lab_carbonate",
+      "code": "05.07",
+      "name": "Содержание карбонатов в грунте",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 670
+    },
+    {
+      "id": "lab_frost_heave",
+      "code": "05.08",
+      "name": "Относительная деформация морозного пучения",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 57",
+      "base_cost": 4546
+    },
+    {
+      "id": "lab_compression_sand",
+      "code": "05.10.01",
+      "name": "Компрессионные испытания песчаного грунта",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 58",
+      "base_cost": 5452
+    },
+    {
+      "id": "lab_compression_clay_lt025",
+      "code": "05.10.02",
+      "name": "Компрессионные испытания глинистого грунта (IL<0.25)",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 58",
+      "base_cost": 7357
+    },
+    {
+      "id": "lab_compression_clay_gt025",
+      "code": "05.10.03",
+      "name": "Компрессионные испытания глинистого грунта (IL>0.25)",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 58",
+      "base_cost": 7901
+    },
+    {
+      "id": "lab_compression_organic",
+      "code": "05.10.04",
+      "name": "Компрессионные испытания органо-минерального грунта",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 58",
+      "base_cost": 10441
+    },
+    {
+      "id": "lab_shear_sand",
+      "code": "05.11.01",
+      "name": "Прямой срез песчаного грунта (КД)",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 59",
+      "base_cost": 8520
+    },
+    {
+      "id": "lab_shear_loam",
+      "code": "05.11.02",
+      "name": "Прямой срез суглинка (КД)",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 59",
+      "base_cost": 9091
+    },
+    {
+      "id": "lab_shear_clay",
+      "code": "05.11.03",
+      "name": "Прямой срез глины (КД)",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 59",
+      "base_cost": 9293
+    },
+    {
+      "id": "lab_triaxial_cd_sand",
+      "code": "05.12.01",
+      "name": "Трёхосное сжатие песка КД",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 60",
+      "base_cost": 13780
+    },
+    {
+      "id": "lab_triaxial_cd_clay",
+      "code": "05.12.02",
+      "name": "Трёхосное сжатие глины КД (IL<0.25)",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "soil_properties",
+      "table_ref": "Таблица 60",
+      "base_cost": 19410
+    },
+    {
+      "id": "lab_water_full",
+      "code": "06.01",
+      "name": "Полный химический анализ подземных вод",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "water_analysis",
+      "table_ref": "Таблица 63",
+      "base_cost": 11731
+    },
+    {
+      "id": "lab_water_short",
+      "code": "06.02",
+      "name": "Сокращённый химический анализ подземных вод",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "water_analysis",
+      "table_ref": "Таблица 63",
+      "base_cost": 8825
+    },
+    {
+      "id": "lab_extract_full",
+      "code": "06.03",
+      "name": "Полный анализ водной вытяжки из грунтов",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "water_analysis",
+      "table_ref": "Таблица 63",
+      "base_cost": 9786
+    },
+    {
+      "id": "lab_corrosion",
+      "code": "07.01",
+      "name": "Удельное электросопротивление и плотность катодного тока",
+      "unit": "опред.",
+      "category": "laboratory",
+      "group": "corrosion",
+      "table_ref": "Таблица 63",
+      "base_cost": 2726
+    },
+    {
+      "id": "cameral_borehole_cat1",
+      "code": "08.01.01",
+      "name": "Камеральная обработка скважин, сложность I",
+      "unit": "п.м.",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 33",
+      "base_cost": 250
+    },
+    {
+      "id": "cameral_borehole_cat2",
+      "code": "08.01.02",
+      "name": "Камеральная обработка скважин, сложность II",
+      "unit": "п.м.",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 33",
+      "base_cost": 342
+    },
+    {
+      "id": "cameral_borehole_cat3",
+      "code": "08.01.03",
+      "name": "Камеральная обработка скважин, сложность III",
+      "unit": "п.м.",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 33",
+      "base_cost": 434
+    },
+    {
+      "id": "cameral_pit",
+      "code": "08.02",
+      "name": "Камеральная обработка закопушек",
+      "unit": "шт",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 33",
+      "base_cost": 1252
+    },
+    {
+      "id": "cameral_trench_5m",
+      "code": "08.03.01",
+      "name": "Камеральная обработка шурфов до 5 м",
+      "unit": "шт",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 33",
+      "base_cost": 2504
+    },
+    {
+      "id": "cameral_lab_sand",
+      "code": "08.10.01",
+      "name": "Камеральная обработка лаб. работ - физика песков",
+      "unit": "образец",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 62",
+      "base_cost": 320
+    },
+    {
+      "id": "cameral_lab_clay",
+      "code": "08.10.02",
+      "name": "Камеральная обработка лаб. работ - физика глин",
+      "unit": "образец",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 62",
+      "base_cost": 381
+    },
+    {
+      "id": "cameral_lab_mech_sand",
+      "code": "08.11.01",
+      "name": "Камеральная обработка лаб. работ - механика песков",
+      "unit": "образец",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 62",
+      "base_cost": 693
+    },
+    {
+      "id": "cameral_lab_mech_clay",
+      "code": "08.11.02",
+      "name": "Камеральная обработка лаб. работ - механика глин",
+      "unit": "образец",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 62",
+      "base_cost": 730
+    },
+    {
+      "id": "cameral_lab_water_short",
+      "code": "08.12.01",
+      "name": "Камеральная обработка сокращённого хим. анализа воды",
+      "unit": "проба",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 64",
+      "base_cost": 4412
+    },
+    {
+      "id": "cameral_lab_water_full",
+      "code": "08.12.02",
+      "name": "Камеральная обработка полного хим. анализа воды",
+      "unit": "проба",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 64",
+      "base_cost": 5865
+    },
+    {
+      "id": "cameral_lab_extract",
+      "code": "08.12.03",
+      "name": "Камеральная обработка анализа водной вытяжки",
+      "unit": "проба",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 64",
+      "base_cost": 4893
+    },
+    {
+      "id": "cameral_lab_corrosion",
+      "code": "08.13.01",
+      "name": "Камеральная обработка коррозионной агрессивности",
+      "unit": "проба",
+      "category": "office",
+      "group": "cameral_drilling",
+      "table_ref": "Таблица 64",
+      "base_cost": 1363
+    },
+    {
+      "id": "program_cat2_1ha_10m",
+      "code": "09.01.05",
+      "name": "Программа ИГИ, сложность II, до 1 га, до 10 м",
+      "unit": "программа",
+      "category": "office",
+      "group": "program",
+      "table_ref": "Таблица 66",
+      "base_cost": 51681
+    },
+    {
+      "id": "program_cat2_10ha_15m",
+      "code": "09.01.10",
+      "name": "Программа ИГИ, сложность II, 1-10 га, 10-15 м",
+      "unit": "программа",
+      "category": "office",
+      "group": "program",
+      "table_ref": "Таблица 66",
+      "base_cost": 143559
+    },
+    {
+      "id": "report_cat1_50k",
+      "code": "10.01.02",
+      "name": "Технический отчёт ИГИ, сложность I, до 50 тыс.руб. камеральных",
+      "unit": "отчёт",
+      "category": "office",
+      "group": "report",
+      "table_ref": "Таблица 65",
+      "base_cost": 165377
+    },
+    {
+      "id": "report_cat2_20k",
+      "code": "10.02.01",
+      "name": "Технический отчёт ИГИ, сложность II, до 20 тыс.руб. камеральных",
+      "unit": "отчёт",
+      "category": "office",
+      "group": "report",
+      "table_ref": "Таблица 65",
+      "base_cost": 134685
+    },
+    {
+      "id": "report_cat2_50k",
+      "code": "10.02.02",
+      "name": "Технический отчёт ИГИ, сложность II, до 50 тыс.руб. камеральных",
+      "unit": "отчёт",
+      "category": "office",
+      "group": "report",
+      "table_ref": "Таблица 65",
+      "base_cost": 203793
+    },
+    {
+      "id": "report_cat2_100k",
+      "code": "10.02.03",
+      "name": "Технический отчёт ИГИ, сложность II, до 100 тыс.руб. камеральных",
+      "unit": "отчёт",
+      "category": "office",
+      "group": "report",
+      "table_ref": "Таблица 65",
+      "base_cost": 278776
+    },
+    {
+      "id": "report_cat2_250k",
+      "code": "10.02.04",
+      "name": "Технический отчёт ИГИ, сложность II, до 250 тыс.руб. камеральных",
+      "unit": "отчёт",
+      "category": "office",
+      "group": "report",
+      "table_ref": "Таблица 65",
+      "base_cost": 421816
+    },
+    {
+      "id": "report_cat3_500k",
+      "code": "10.03.05",
+      "name": "Технический отчёт ИГИ, сложность III, до 500 тыс.руб. камеральных",
+      "unit": "отчёт",
+      "category": "office",
+      "group": "report",
+      "table_ref": "Таблица 65",
+      "base_cost": 646576
+    }
+  ]
+}
