@@ -306,12 +306,17 @@ class Calculator:
     def _check_distance_range(self, distance: float, range_key: str) -> bool:
         """Проверить попадание в диапазон расстояния"""
         ranges = {
+            # Для проезда
             "up_to_200": (0, 200),
             "200_to_500": (200, 500),
             "500_to_1000": (500, 1000),
             "1000_to_2000": (1000, 2000),
             "2000_to_4000": (2000, 4000),
-            "over_4000": (4000, 100000)
+            "over_4000": (4000, 100000),
+            
+            # Для организации (Таблица 8)
+            "up_to_100": (0, 100),
+            "100_to_500": (100, 500)
         }
         if range_key in ranges:
             min_val, max_val = ranges[range_key]

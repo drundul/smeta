@@ -38,10 +38,10 @@ st.set_page_config(
 
 # Инициализация калькулятора
 @st.cache_resource
-def get_calculator_v6():
+def get_calculator_v7():
     return Calculator()
 
-calc = get_calculator_v6()
+calc = get_calculator_v7()
 
 
 # Инициализация состояния
@@ -794,6 +794,35 @@ with tab2:
             st.metric("📄 СК", f"{office_total:,.0f} ₽")
         with col4:
             st.metric("📊 Базовый итог", f"{base_total:,.0f} ₽")
+        
+        st.divider()
+        
+        # Расчёт и отображение дополнительных затрат
+        temp_estimate = calc.create_estimate(
+             project_name="Temp",
+             items_data=st.session_state.estimate_items,
+             soil_category=st.session_state.project_info.get("soil_category", "II"),
+             climate_zone="III"
+        )
+        field_cost_base = float(temp_estimate.subtotal_field)
+        
+        dz_list = calculate_additional_costs(field_cost_base, st.session_state.project_info)
+        dz_sum = sum(item["value"] for item in dz_list)
+        final_total = base_total + dz_sum
+        
+        if dz_list:
+            st.markdown("##### ➕ Дополнительные затраты")
+            for dz in dz_list:
+                d_col1, d_col2 = st.columns([3, 1])
+                with d_col1:
+                    st.write(f"{dz['name']}")
+                    st.caption(f"Обоснование: {dz['basis']}")
+                with d_col2:
+                    st.write(f"**{dz['value']:,.0f} ₽**")
+            st.divider()
+            
+        # Финальный итог крупно
+        st.markdown(f"### 🏁 ИТОГО: {final_total:,.0f} ₽")
         
         st.divider()
         
