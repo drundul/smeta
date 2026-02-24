@@ -46,6 +46,7 @@ class WorkItem:
     notes: str = ""
     table_ref: str = ""
     formula: str = ""
+    pz1p_fixed: Decimal = Decimal("0")  # Фиксированная часть для рекогносцировки (ПЗ1п)
     
     def calculate(self):
         """Рассчитать стоимость позиции"""
@@ -59,6 +60,12 @@ class WorkItem:
         self.total_cost = (self.unit_cost * self.quantity).quantize(
             Decimal("0.01"), rounding=ROUND_HALF_UP
         )
+        
+        # Рекогносцировка: добавляем фиксированную часть ПЗ1п × коэффициенты
+        if self.pz1p_fixed > 0:
+            self.total_cost = self.total_cost + (self.pz1p_fixed * self.total_coefficient).quantize(
+                Decimal("0.01"), rounding=ROUND_HALF_UP)
+        
         return self
 
 
@@ -571,12 +578,9 @@ class Calculator:
             formula=formula
         )
         
-        # Рекогносцировка: после calculate() добавляем фиксированную часть ПЗ1п, умноженную на коэффициенты
+        # Для рекогносцировки — сохраняем ПЗ1п в поле pz1p_fixed, чтобы calculate() всегда его учитывал
         if pz1p_fixed > 0:
-            item.calculate()
-            item.total_cost = item.total_cost + (pz1p_fixed * item.total_coefficient).quantize(
-                Decimal("0.01"), rounding=ROUND_HALF_UP)
-            return item
+            item.pz1p_fixed = pz1p_fixed
         
         return item
     
