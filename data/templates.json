@@ -129,12 +129,6 @@
           "nz_ref": "Глава IV, Таблица 45"
         },
         {
-          "work_id": "program_cat2_lt1ha_15m",
-          "quantity": 1,
-          "description": "Составление программы",
-          "nz_ref": "Глава X, Таблица 66"
-        },
-        {
           "work_id": "report_cat2_50k",
           "quantity": 1,
           "description": "Технический отчёт",
@@ -368,12 +362,6 @@
           "nz_ref": "Глава IV, Таблица 33"
         },
         {
-          "work_id": "program_cat2_lt1ha_15m",
-          "quantity": 1,
-          "description": "Составление программы работ",
-          "nz_ref": "Глава X, Таблица 66"
-        },
-        {
           "work_id": "report_cat2_20k",
           "quantity": 1,
           "description": "Технический отчёт (при стоимости камеральных до 20 тыс.)",
@@ -573,12 +561,6 @@
           "nz_ref": "Глава IV, Таблица 33"
         },
         {
-          "work_id": "program_cat2_lt1ha_10m",
-          "quantity": 1,
-          "description": "Составление программы",
-          "nz_ref": "Глава X, Таблица 66"
-        },
-        {
           "work_id": "report_cat2_20k",
           "quantity": 1,
           "description": "Технический отчёт",
@@ -703,12 +685,6 @@
           "nz_ref": "Глава IV, Таблица 33"
         },
         {
-          "work_id": "program_cat2_lt1ha_15m",
-          "quantity": 1,
-          "description": "Составление программы",
-          "nz_ref": "Глава X, Таблица 66"
-        },
-        {
           "work_id": "report_cat2_50k",
           "quantity": 1,
           "description": "Технический отчёт",
@@ -789,12 +765,6 @@
           "quantity": 30,
           "description": "Камеральная обработка скважин",
           "nz_ref": "Глава IV, Таблица 33"
-        },
-        {
-          "work_id": "program_cat2_10ha_10m",
-          "quantity": 1,
-          "description": "Составление программы",
-          "nz_ref": "Глава X, Таблица 66"
         },
         {
           "work_id": "report_cat2_20k",
@@ -901,12 +871,6 @@
           "description": "Камеральная обработка скважин",
           "nz_ref": "Глава IV, Таблица 33",
           "per_support": true
-        },
-        {
-          "work_id": "program_cat2_lt1ha_5m",
-          "quantity": 1,
-          "description": "Составление программы",
-          "nz_ref": "Глава X, Таблица 66"
         },
         {
           "work_id": "report_cat2_20k",

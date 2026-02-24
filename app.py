@@ -176,6 +176,26 @@ with st.sidebar:
         step=5
     )
     
+    # Максимальная глубина исследования (для расчёта стоимости Программы, Таблица 66)
+    DEPTH_OPTIONS = {
+        "5": "до 5 м",
+        "10": "от 5 до 10 м",
+        "15": "от 10 до 15 м",
+        "25": "от 15 до 25 м",
+        "50": "от 25 до 50 м",
+        "75": "от 50 до 75 м",
+        "over": "свыше 75 м",
+    }
+    depth_keys = list(DEPTH_OPTIONS.keys())
+    selected_depth = st.selectbox(
+        "📏 Макс. глубина исследования (Табл. 66)",
+        options=depth_keys,
+        format_func=lambda x: DEPTH_OPTIONS[x],
+        index=depth_keys.index(st.session_state.project_info.get("max_depth", "10")),
+        help="Максимальная глубина бурения/зондирования на объекте. Определяет стоимость Программы ИГИ (Таблица 66)."
+    )
+    st.session_state.project_info["max_depth"] = selected_depth
+    
     st.divider()
     st.subheader("📐 Параметры ДЗ")
     
@@ -910,6 +930,48 @@ with tab2:
         field_items = []
         lab_items = []
         office_items = []
+        
+        # === Авто-подбор Программы ИГИ (Таблица 66) ===
+        # Определяем площадку из рекогносцировки и глубину из параметров проекта
+        recon_area_ha = 0
+        for item_data in st.session_state.estimate_items:
+            if 'recon' in item_data.get("work_id", ""):
+                recon_area_ha = item_data.get("quantity", 1)
+                break
+        
+        max_depth_key = st.session_state.project_info.get("max_depth", "10")
+        
+        # Определяем area_key для Таблицы 66
+        if recon_area_ha <= 1:
+            area_suffix = "lt1ha"
+        elif recon_area_ha <= 10:
+            area_suffix = "10ha"
+        elif recon_area_ha <= 100:
+            area_suffix = "100ha"
+        else:
+            area_suffix = "gt100ha"
+        
+        # Маппинг depth_key → suffix в ID
+        depth_suffix_map = {"5": "5m", "10": "10m", "15": "15m", "25": "25m", "50": "50m", "75": "75m", "over": "over"}
+        depth_suffix = depth_suffix_map.get(max_depth_key, "10m")
+        
+        auto_program_id = f"program_cat2_{area_suffix}_{depth_suffix}"
+        
+        # Убираем старую программу (если была) и вставляем новую
+        st.session_state.estimate_items = [
+            i for i in st.session_state.estimate_items 
+            if 'program' not in i.get("work_id", "")
+        ]
+        
+        # Добавляем программу в конец (секция камеральных)
+        program_info = calc.get_work_type(auto_program_id)
+        if program_info:
+            st.session_state.estimate_items.append({
+                "work_id": auto_program_id,
+                "quantity": 1,
+                "additional_coefficients": {},
+                "uid": "prog_auto"
+            })
         
         # 1. Сначала считаем сумму камеральных работ (без отчёта и программы)
         cameral_base_sum = 0
