@@ -129,7 +129,7 @@
           "nz_ref": "Глава IV, Таблица 45"
         },
         {
-          "work_id": "program_cat2_1ha_10m",
+          "work_id": "program_cat2_lt1ha_15m",
           "quantity": 1,
           "description": "Составление программы",
           "nz_ref": "Глава X, Таблица 66"
@@ -368,7 +368,7 @@
           "nz_ref": "Глава IV, Таблица 33"
         },
         {
-          "work_id": "program_cat2_1ha_10m",
+          "work_id": "program_cat2_lt1ha_15m",
           "quantity": 1,
           "description": "Составление программы работ",
           "nz_ref": "Глава X, Таблица 66"
@@ -573,7 +573,7 @@
           "nz_ref": "Глава IV, Таблица 33"
         },
         {
-          "work_id": "program_cat2_1ha_10m",
+          "work_id": "program_cat2_lt1ha_10m",
           "quantity": 1,
           "description": "Составление программы",
           "nz_ref": "Глава X, Таблица 66"
@@ -703,7 +703,7 @@
           "nz_ref": "Глава IV, Таблица 33"
         },
         {
-          "work_id": "program_cat2_1ha_10m",
+          "work_id": "program_cat2_lt1ha_15m",
           "quantity": 1,
           "description": "Составление программы",
           "nz_ref": "Глава X, Таблица 66"
@@ -791,7 +791,7 @@
           "nz_ref": "Глава IV, Таблица 33"
         },
         {
-          "work_id": "program_cat2_1ha_10m",
+          "work_id": "program_cat2_10ha_10m",
           "quantity": 1,
           "description": "Составление программы",
           "nz_ref": "Глава X, Таблица 66"
@@ -903,7 +903,7 @@
           "per_support": true
         },
         {
-          "work_id": "program_cat2_1ha_10m",
+          "work_id": "program_cat2_lt1ha_5m",
           "quantity": 1,
           "description": "Составление программы",
           "nz_ref": "Глава X, Таблица 66"
