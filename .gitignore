@@ -5,6 +5,7 @@ __pycache__/
 *.rtf
 *.pdf
 *.txt
+!requirements.txt
 all_tables.json
 
 # Утилитарные скрипты (не нужны для работы приложения)
