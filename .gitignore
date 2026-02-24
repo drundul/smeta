@@ -1,0 +1,23 @@
+__pycache__/
+*.pyc
+*.doc
+*.docx
+*.rtf
+*.pdf
+*.txt
+all_tables.json
+
+# Утилитарные скрипты (не нужны для работы приложения)
+add_recon_all.py
+apply_exact_names.py
+check_*.py
+clean_*.py
+dump_*.py
+extract_*.py
+fix_*.py
+list_*.py
+match_names.py
+regex_clean.py
+rename.py
+show_tables.py
+verify_*.py
