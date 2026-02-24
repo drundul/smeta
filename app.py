@@ -1014,9 +1014,9 @@ with tab2:
                 
                 quantity = 1 # Отчет всегда 1
                 total_cost = calculated_report_cost
-                # Добавим пометку в название
-                display_name = f"Технический отчёт (ИГИ, {complexity} кат.)"
-                calc_formula = f"{calculated_report_cost:,.0f} (Таблица 65, {range_desc})"
+                # Берём официальное название из work_types.json
+                display_name = work_info.get("name", "Составление технического отчета по результатам выполнения работ по ИГИ")
+                calc_formula = f"{calculated_report_cost:,.0f} (Таблица 65, {complexity} кат., {range_desc})"
             else:
                 # Если это не отчет, убираем override (на случай если он был раньше)
                 if "override_base_cost" in st.session_state.estimate_items[i] and work_info.get("group") != "report":
