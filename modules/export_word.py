@@ -34,7 +34,8 @@ def export_to_word(estimate, filename: str = None) -> Path:
     style.font.size = Pt(11)
     
     # Заголовок
-    title = doc.add_heading('ЛОКАЛЬНАЯ СМЕТА', level=1)
+    template_label = f" ({estimate.template_name})" if getattr(estimate, "template_name", "") else ""
+    title = doc.add_heading(f'ЛОКАЛЬНАЯ СМЕТА{template_label}', level=1)
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     
     subtitle = doc.add_paragraph('на инженерно-геологические изыскания')

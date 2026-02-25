@@ -47,7 +47,8 @@ def export_to_excel(estimate, filename: str = None) -> Path:
     
     # Заголовок сметы
     ws.merge_cells('A1:G1')
-    ws['A1'] = "ЛОКАЛЬНАЯ СМЕТА"
+    template_label = f" ({estimate.template_name})" if getattr(estimate, "template_name", "") else ""
+    ws['A1'] = f"ЛОКАЛЬНАЯ СМЕТА{template_label}"
     ws['A1'].font = title_font
     ws['A1'].alignment = Alignment(horizontal='center')
     

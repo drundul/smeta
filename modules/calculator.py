@@ -87,6 +87,7 @@ class Estimate:
     work_region: str = ""
     distance_km: int = 0
     template_id: str = ""
+    template_name: str = ""
     
     @property
     def base_total(self) -> Decimal:

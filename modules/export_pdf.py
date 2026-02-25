@@ -118,7 +118,8 @@ def export_to_pdf(estimate, filename: str = None) -> Path:
     elements = []
     
     # Заголовок
-    elements.append(Paragraph("ЛОКАЛЬНАЯ СМЕТА", title_style))
+    template_label = f" ({estimate.template_name})" if getattr(estimate, "template_name", "") else ""
+    elements.append(Paragraph(f"ЛОКАЛЬНАЯ СМЕТА{template_label}", title_style))
     elements.append(Paragraph("на инженерно-геологические изыскания", subtitle_style))
     
     # Информация о проекте

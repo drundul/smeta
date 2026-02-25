@@ -688,6 +688,7 @@ with tab0:
                             msg += f" (×{multiplier})"
                         msg += " Перейдите на вкладку «Текущая смета»."
                         st.session_state.project_info["template_id"] = template["id"]
+                        st.session_state.project_info["template_name"] = template["name"]
                         st.success(msg)
                         st.rerun()
 
@@ -896,9 +897,11 @@ with tab2:
         estimate.contractor = st.session_state.project_info["contractor"]
         estimate.price_index = Decimal(str(current_index))
         estimate.contract_coefficient = Decimal(str(k_contract))
+        estimate.template_name = st.session_state.project_info.get("template_name", "")
         
         # Заголовок таблицы
-        st.markdown("#### Локальная смета на работы по ИГИ")
+        template_label = f" ({estimate.template_name})" if estimate.template_name else ""
+        st.markdown(f"#### Локальная смета на работы по ИГИ{template_label}")
         st.markdown(f"*Приказ Минстроя России №281/пр от 12.05.2025. Уровень цен: 01.01.2024*")
         st.divider()
         
@@ -1370,6 +1373,7 @@ with tab4:
         estimate.work_region = st.session_state.project_info.get("region", "")
         estimate.distance_km = st.session_state.project_info.get("distance_km", 0)
         estimate.template_id = st.session_state.project_info.get("template_id", "")
+        estimate.template_name = st.session_state.project_info.get("template_name", "")
         
         # ДЗ уже добавлены выше; повторный вызов не нужен
         
