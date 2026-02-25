@@ -2,10 +2,21 @@
 Экспорт сметы в Excel
 """
 
+import json
 from pathlib import Path
 from openpyxl import Workbook
 from openpyxl.styles import Font, Alignment, Border, Side, PatternFill
 from openpyxl.utils import get_column_letter
+
+_JUSTIFICATIONS_PATH = Path(__file__).parent.parent / "data" / "normative_justifications.json"
+
+def _load_justifications() -> dict:
+    """Загрузить обоснования объёмов из JSON."""
+    try:
+        with open(_JUSTIFICATIONS_PATH, encoding='utf-8') as f:
+            return json.load(f).get("template_justifications", {})
+    except Exception:
+        return {}
 
 
 def export_to_excel(estimate, filename: str = None) -> Path:
@@ -340,39 +351,51 @@ def export_to_excel(estimate, filename: str = None) -> Path:
         top=Side(style='thin'), bottom=Side(style='thin')
     )
 
-    # Ширина колонок вкладки 2
+    # Загружаем обоснования объёмов
+    all_justifications = _load_justifications()
+    template_id = getattr(estimate, 'template_id', None)
+    qty_justifications = all_justifications.get(template_id, {})
+
+    # Ширина колонок вкладки 2 (11 колонок)
     col2_widths = {
         'A': 5,   # №
-        'B': 48,  # Наименование
-        'C': 8,   # Ед.
-        'D': 7,   # Кол-во
-        'E': 14,  # Норм. база
-        'F': 12,  # ПЗ (цена)
-        'G': 22,  # Коэффициенты / пояснение
-        'H': 26,  # Формула расчёта
-        'I': 12,  # Стоимость
+        'B': 44,  # Наименование
+        'C': 7,   # Ед.
+        'D': 6,   # Кол-во
+        'E': 13,  # Норм. база (стоимость)
+        'F': 11,  # ПЗ (цена)
+        'G': 18,  # Коэффициенты
+        'H': 22,  # Формула расчёта
+        'I': 10,  # Стоимость
+        'J': 22,  # Норм. основание объёма (СП, ГОСТ)
+        'K': 42,  # Обоснование объёма
     }
     for col_letter, width in col2_widths.items():
         ws2.column_dimensions[col_letter].width = width
 
+    # Заливка для колонок обоснования
+    qty_fill   = PatternFill(start_color="EBF3E8", end_color="EBF3E8", fill_type="solid")
+    qty_miss   = PatternFill(start_color="FFF0F0", end_color="FFF0F0", fill_type="solid")
+
     # ----- Заголовок листа -----
-    ws2.merge_cells('A1:I1')
-    ws2['A1'] = "ПОЯСНИТЕЛЬНАЯ ЗАПИСКА К СМЕТЕ (Обоснование стоимости работ)"
+    ws2.merge_cells('A1:K1')
+    ws2['A1'] = "ПОЯСНИТЕЛЬНАЯ ЗАПИСКА К СМЕТЕ (Обоснование стоимости и объёмов работ)"
     ws2['A1'].font = Font(bold=True, size=13)
     ws2['A1'].alignment = Alignment(horizontal='center', vertical='center')
     ws2.row_dimensions[1].height = 22
 
-    ws2.merge_cells('A2:I2')
-    ws2['A2'] = f"Нормативная база: Приказ Минстроя РФ от 12.05.2025 № 281/пр «О нормативах затрат на проведение инженерных изысканий» (НЗ №281/пр)"
+    ws2.merge_cells('A2:K2')
+    ws2['A2'] = "Нормативная база: НЗ №281/пр (Приказ Минстроя РФ от 12.05.2025 № 281/пр) | СП 446.1325800.2019 | СП 341.1325800.2017 | СП 47.13330.2016 | ГОСТ 20522-2012"
     ws2['A2'].font = Font(italic=True, size=9, color="444444")
     ws2['A2'].alignment = Alignment(horizontal='left', vertical='center', wrap_text=True)
     ws2.row_dimensions[2].height = 24
 
-    ws2.merge_cells('A3:I3')
+    ws2.merge_cells('A3:K3')
     ws2['A3'] = (
         f"Проект: {estimate.project_name}   |   "
         f"Объект: {estimate.object_name or '—'}   |   "
         f"Регион: {getattr(estimate, 'work_region', '—') or '—'}   |   "
+        f"Шаблон: {template_id or '—'}   |   "
         f"Дата: {estimate.date_created}"
     )
     ws2['A3'].font = Font(size=9, bold=True)
@@ -381,25 +404,29 @@ def export_to_excel(estimate, filename: str = None) -> Path:
 
     r2 = 5  # начальная строка данных
 
-    # ----- Заголовок таблицы -----
-    headers2 = ["№", "Наименование работ", "Ед.", "Кол-во",
-                 "Норм. база\n(НЗ №281/пр)", "ПЗ, руб.", "Коэффициенты / пояснение",
-                 "Формула расчёта", "Стоимость,\nруб."]
+    # ----- Заголовок таблицы (11 колонок) -----
+    headers2 = [
+        "№", "Наименование работ", "Ед.", "Кол-во",
+        "Норм. база\n(НЗ №281/пр)", "ПЗ, руб.", "Коэф-ты",
+        "Формула расчёта", "Стоимость,\nруб.",
+        "Норм. основание\nобъёма (СП/ГОСТ)",
+        "Обоснование объёма работ"
+    ]
     for ci, h in enumerate(headers2, 1):
         c = ws2.cell(row=r2, column=ci, value=h)
         c.font = hdr2_font
-        c.fill = hdr2_fill
+        c.fill = hdr2_fill if ci <= 9 else PatternFill(start_color="375623", end_color="375623", fill_type="solid")
         c.alignment = wrap_center
         c.border = thin2
-    ws2.row_dimensions[r2].height = 30
+    ws2.row_dimensions[r2].height = 32
     r2 += 1
 
-    def w2_border_row(row_idx, ncols=9):
+    def w2_border_row(row_idx, ncols=11):
         for ci in range(1, ncols + 1):
             ws2.cell(row=row_idx, column=ci).border = thin2
 
     def w2_section(row_idx, title):
-        ws2.merge_cells(f'A{row_idx}:I{row_idx}')
+        ws2.merge_cells(f'A{row_idx}:K{row_idx}')
         c = ws2.cell(row=row_idx, column=1, value=title)
         c.font = sec_font
         c.fill = sec_fill
@@ -499,6 +526,22 @@ def export_to_excel(estimate, filename: str = None) -> Path:
             c.number_format = money_format
             c.alignment = wrap_right; c.border = thin2; c.fill = fill_r
 
+            # Нормативное основание объёма (J) и Обоснование (K)
+            work_id = getattr(item, 'work_id', item.code)
+            jdata = qty_justifications.get(work_id, {})
+            qty_ref  = jdata.get('qty_basis', '')
+            qty_note = jdata.get('qty_note', '')
+            has_just = bool(qty_ref or qty_note)
+            j_fill = qty_fill if has_just else qty_miss
+
+            cj = ws2.cell(row=r2, column=10, value=qty_ref or '—')
+            cj.font = Font(size=8, italic=True, color="1A5C2A" if has_just else "AA0000")
+            cj.alignment = wrap_left; cj.border = thin2; cj.fill = j_fill
+
+            ck = ws2.cell(row=r2, column=11, value=qty_note or ('Нет данных' if not template_id else 'Нет обоснования для данного шаблона'))
+            ck.font = Font(size=9, color="1A5C2A" if has_just else "AA0000")
+            ck.alignment = wrap_left; ck.border = thin2; ck.fill = j_fill
+
             item_num2 += 1
             r2 += 1
 
@@ -509,7 +552,7 @@ def export_to_excel(estimate, filename: str = None) -> Path:
         c.font = Font(bold=True, size=10); c.fill = subtotal_fill
         c.alignment = Alignment(horizontal='right', vertical='center')
         w2_border_row(r2)
-        for ci2 in range(1, 9):
+        for ci2 in range(1, 12):
             ws2.cell(row=r2, column=ci2).fill = subtotal_fill
         c9 = ws2.cell(row=r2, column=9, value=subtotal2)
         c9.font = Font(bold=True, size=10); c9.number_format = money_format
@@ -523,7 +566,7 @@ def export_to_excel(estimate, filename: str = None) -> Path:
     # ДЗ (Дополнительные затраты) — расширенное обоснование
     # =========================================================
     if estimate.additional_costs:
-        ws2.merge_cells(f'A{r2}:I{r2}')
+        ws2.merge_cells(f'A{r2}:K{r2}')
         c = ws2.cell(row=r2, column=1,
                      value="ДОПОЛНИТЕЛЬНЫЕ ЗАТРАТЫ (ДЗ) — обоснование")
         c.font = Font(bold=True, size=11, color="FFFFFF")
@@ -588,7 +631,7 @@ def export_to_excel(estimate, filename: str = None) -> Path:
         c.font = Font(bold=True, size=10); c.fill = total2_fill
         c.alignment = Alignment(horizontal='right', vertical='center')
         w2_border_row(r2)
-        for ci2 in range(1, 9):
+        for ci2 in range(1, 12):
             ws2.cell(row=r2, column=ci2).fill = total2_fill
         c8 = ws2.cell(row=r2, column=8, value=dz_total)
         c8.font = Font(bold=True, size=11); c8.number_format = money_format
@@ -625,7 +668,7 @@ def export_to_excel(estimate, filename: str = None) -> Path:
         c.fill = total2_fill if is_total else subtotal_fill
         c.alignment = Alignment(horizontal='right', vertical='center')
         w2_border_row(r2)
-        for ci2 in range(1, 9):
+        for ci2 in range(1, 12):
             ws2.cell(row=r2, column=ci2).fill = (total2_fill if is_total else subtotal_fill)
         cv = ws2.cell(row=r2, column=9, value=val)
         cv.font = Font(bold=True, size=10 if not is_total else 12)
@@ -637,9 +680,9 @@ def export_to_excel(estimate, filename: str = None) -> Path:
         r2 += 1
 
     r2 += 2
-    ws2.merge_cells(f'A{r2}:I{r2}')
+    ws2.merge_cells(f'A{r2}:K{r2}')
     ws2.cell(row=r2, column=1,
-             value="Смета составлена в соответствии с Приказом Минстроя России от 12.05.2025 № 281/пр.")
+             value="Смета составлена в соответствии с Приказом Минстроя России от 12.05.2025 № 281/пр. Объёмы работ обоснованы СП 446.1325800.2019, СП 341.1325800.2017, ГОСТ 20522-2012.")
     ws2.cell(row=r2, column=1).font = Font(italic=True, size=9, color="666666")
 
     # Сохранение

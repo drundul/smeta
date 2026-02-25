@@ -686,6 +686,7 @@ with tab0:
                         if multiplier > 1:
                             msg += f" (×{multiplier})"
                         msg += " Перейдите на вкладку «Текущая смета»."
+                        st.session_state.project_info["template_id"] = template["id"]
                         st.success(msg)
                         st.rerun()
 
@@ -1367,6 +1368,7 @@ with tab4:
         estimate.base_city = "г. Санкт-Петербург"
         estimate.work_region = st.session_state.project_info.get("region", "")
         estimate.distance_km = st.session_state.project_info.get("distance_km", 0)
+        estimate.template_id = st.session_state.project_info.get("template_id", "")
         
         # ДЗ уже добавлены выше; повторный вызов не нужен
         
