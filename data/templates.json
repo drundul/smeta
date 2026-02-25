@@ -592,6 +592,13 @@
           "nz_ref": "Глава IV, Таблица 14"
         },
         {
+          "work_id": "hydrogeo_observation",
+          "quantity": 2,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
           "work_id": "lab_sample_prep",
           "quantity": 14,
           "description": "Приёмка образцов (отбор каждые 1.5-2м)",
