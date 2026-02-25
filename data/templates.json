@@ -69,6 +69,20 @@
           "nz_ref": "Глава VII, Таблица 56"
         },
         {
+          "work_id": "lab_sample_selection",
+          "quantity": 12,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
+          "work_id": "lab_sample_description",
+          "quantity": 12,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
           "work_id": "lab_moisture",
           "quantity": 12,
           "description": "Влажность",
@@ -127,6 +141,13 @@
           "quantity": 20,
           "description": "Камеральная обработка статического зондирования",
           "nz_ref": "Глава IV, Таблица 45"
+        },
+        {
+          "work_id": "cameral_lab_clay",
+          "quantity": 12,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
         },
         {
           "work_id": "report_cat2_50k",
@@ -209,6 +230,20 @@
           "nz_ref": "Глава VII, Таблица 56"
         },
         {
+          "work_id": "lab_sample_selection",
+          "quantity": 30,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
+          "work_id": "lab_sample_description",
+          "quantity": 30,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
           "work_id": "lab_moisture",
           "quantity": 30,
           "description": "Влажность",
@@ -261,6 +296,20 @@
           "quantity": 50,
           "description": "Камеральная обработка",
           "nz_ref": "Глава IV, Таблица 33"
+        },
+        {
+          "work_id": "cameral_lab_clay",
+          "quantity": 30,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
+          "work_id": "cameral_lab_mech_clay",
+          "quantity": 10,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
         },
         {
           "work_id": "report_cat3_500k",
@@ -326,6 +375,20 @@
           "nz_ref": "Глава VII, Таблица 56"
         },
         {
+          "work_id": "lab_sample_selection",
+          "quantity": 15,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
+          "work_id": "lab_sample_description",
+          "quantity": 15,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
           "work_id": "lab_moisture",
           "quantity": 15,
           "description": "Влажность",
@@ -360,6 +423,13 @@
           "quantity": 24,
           "description": "Камеральная обработка",
           "nz_ref": "Глава IV, Таблица 33"
+        },
+        {
+          "work_id": "cameral_lab_clay",
+          "quantity": 15,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
         },
         {
           "work_id": "report_cat2_20k",
@@ -419,6 +489,20 @@
           "nz_ref": "Глава VII, Таблица 56"
         },
         {
+          "work_id": "lab_sample_selection",
+          "quantity": 15,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
+          "work_id": "lab_sample_description",
+          "quantity": 15,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
           "work_id": "lab_moisture",
           "quantity": 15,
           "description": "Влажность",
@@ -447,6 +531,13 @@
           "quantity": 30,
           "description": "Камеральная обработка",
           "nz_ref": "Глава IV, Таблица 33"
+        },
+        {
+          "work_id": "cameral_lab_clay",
+          "quantity": 15,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
         },
         {
           "work_id": "report_cat2_100k",
@@ -507,6 +598,20 @@
           "nz_ref": "Глава VII, Таблица 56"
         },
         {
+          "work_id": "lab_sample_selection",
+          "quantity": 14,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
+          "work_id": "lab_sample_description",
+          "quantity": 14,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
           "work_id": "lab_moisture",
           "quantity": 14,
           "description": "Влажность",
@@ -559,6 +664,20 @@
           "quantity": 20,
           "description": "Камеральная обработка скважин",
           "nz_ref": "Глава IV, Таблица 33"
+        },
+        {
+          "work_id": "cameral_lab_clay",
+          "quantity": 14,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
+          "work_id": "cameral_lab_mech_clay",
+          "quantity": 6,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
         },
         {
           "work_id": "report_cat2_20k",
@@ -625,6 +744,20 @@
           "nz_ref": "Глава VII, Таблица 56"
         },
         {
+          "work_id": "lab_sample_selection",
+          "quantity": 12,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
+          "work_id": "lab_sample_description",
+          "quantity": 12,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
           "work_id": "lab_moisture",
           "quantity": 12,
           "description": "Влажность",
@@ -685,6 +818,20 @@
           "nz_ref": "Глава IV, Таблица 33"
         },
         {
+          "work_id": "cameral_lab_clay",
+          "quantity": 12,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
+          "work_id": "cameral_lab_mech_clay",
+          "quantity": 6,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
           "work_id": "report_cat2_50k",
           "quantity": 1,
           "description": "Технический отчёт",
@@ -743,6 +890,20 @@
           "nz_ref": "Глава VII, Таблица 56"
         },
         {
+          "work_id": "lab_sample_selection",
+          "quantity": 10,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
+          "work_id": "lab_sample_description",
+          "quantity": 10,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
           "work_id": "lab_moisture",
           "quantity": 10,
           "description": "Влажность",
@@ -765,6 +926,13 @@
           "quantity": 30,
           "description": "Камеральная обработка скважин",
           "nz_ref": "Глава IV, Таблица 33"
+        },
+        {
+          "work_id": "cameral_lab_clay",
+          "quantity": 10,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
         },
         {
           "work_id": "report_cat2_20k",
@@ -838,6 +1006,20 @@
           "per_support": true
         },
         {
+          "work_id": "lab_sample_selection",
+          "quantity": 4,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
+          "work_id": "lab_sample_description",
+          "quantity": 4,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
+        },
+        {
           "work_id": "lab_moisture",
           "quantity": 4,
           "description": "Влажность (все образцы)",
@@ -871,6 +1053,13 @@
           "description": "Камеральная обработка скважин",
           "nz_ref": "Глава IV, Таблица 33",
           "per_support": true
+        },
+        {
+          "work_id": "cameral_lab_clay",
+          "quantity": 4,
+          "override_base_cost": null,
+          "formula": null,
+          "additional_coefficients": {}
         },
         {
           "work_id": "report_cat2_20k",
