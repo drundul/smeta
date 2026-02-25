@@ -1012,7 +1012,7 @@ with tab2:
         # 2. Если есть отчёт, пересчитываем его стоимость
         if report_item_index >= 0:
             complexity = st.session_state.project_info.get("complexity", "II")
-            # Значения из Таблицы 65 (без интерполяции)
+            # Считаем стоимость отчёта с учётом интерполяции (по Таблице 65)
             calculated_report_cost, range_desc = calc.calculate_report_cost(cameral_base_sum, complexity)
         else:
             calculated_report_cost = 0
@@ -1029,7 +1029,7 @@ with tab2:
             if work_info.get("group") == "report" and calculated_report_cost > 0:
                 base_cost = calculated_report_cost
                 
-                # Находим правильный work_type отчёта по рассчитанной стоимости
+                # Попытка найти точную (табличную) расценку отчёта для замены work_id (сработает для крайних без интерполяции)
                 correct_report_wt = None
                 for wt in calc.work_types.get("work_types", []):
                     if wt.get("group") == "report" and wt.get("base_cost") == int(calculated_report_cost):

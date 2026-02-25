@@ -647,31 +647,41 @@ class Calculator:
             return 0.0, "не найдено"
             
         # Правила разбора ключей (напр. "up_to_20k", "50k", "over_3500k")
-        # Для простоты преобразуем ключи в (limit_value, cost_value, display_text)
-        # Отсортируем по лимиту
         ranges = []
         for key, value in data.items():
             if key.startswith("up_to_"):
                 k_val = int(key.replace("up_to_", "").replace("k", "")) * 1000
                 display = f"до {k_val//1000} тыс. руб."
             elif key.startswith("over_"):
-                k_val = float('inf')
-                val = int(key.replace("over_", "").replace("k", "")) * 1000
-                display = f"свыше {val//1000} тыс. руб."
+                # Сохраняем реальное числовое значение для экстраполяции (берем его как максимум)
+                k_val = int(key.replace("over_", "").replace("k", "")) * 1000
+                display = f"свыше {k_val//1000} тыс. руб."
+                # Для сортировки ставим бесконечность, но для интерполяции это не используется
+                ranges.append((float('inf'), float(value), display))
+                continue
             else:
                 k_val = int(key.replace("k", "")) * 1000
                 display = f"до {k_val//1000} тыс. руб."
-            ranges.append((k_val, value, display))
+            ranges.append((float(k_val), float(value), display))
             
         ranges.sort(key=lambda x: x[0])
         
-        for limit, cost, display in ranges:
-            if cameral_sum <= limit:
-                return float(cost), display
-                
-        # Если почему-то не подошло, возвращаем последнее
-        if ranges:
+        if cameral_sum <= ranges[0][0]:
+            return float(ranges[0][1]), ranges[0][2]
+            
+        # Последний элемент - это inf ("over_..."), предпоследний - максимальный лимит.
+        if len(ranges) >= 2 and cameral_sum >= ranges[-2][0]:
             return float(ranges[-1][1]), ranges[-1][2]
+            
+        for i in range(len(ranges) - 1):
+            x1, y1, _ = ranges[i]
+            x2, y2, _ = ranges[i+1]
+            if x1 < cameral_sum <= x2:
+                # Согласно документам: Ц = Ц1 + (Ц2 - Ц1) * (X - X1) / (X2 - X1)
+                cost = y1 + (y2 - y1) * (cameral_sum - x1) / (x2 - x1)
+                display_range = f"от {int(x1)//1000} до {int(x2)//1000} тыс. руб. (интерполяция)"
+                return round(float(cost), 2), display_range
+                
         return 0.0, ""
 
 
