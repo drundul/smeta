@@ -667,7 +667,19 @@ class Calculator:
         ranges.sort(key=lambda x: x[0])
         
         if cameral_sum <= ranges[0][0]:
-            return float(ranges[0][1]), ranges[0][2]
+            # ЭКСТРАПОЛЯЦИЯ для значений ниже минимального табличного (п. Общих указаний)
+            # Берем первый интервал для определения наклона
+            if len(ranges) >= 2:
+                x1, y1, _ = ranges[0]
+                x2, y2, _ = ranges[1]
+                # Формула экстраполяции: Ц = Ц1 - (Ц2 - Ц1) * (X1 - X) / (X2 - X1)
+                cost = y1 - (y2 - y1) * (x1 - cameral_sum) / (x2 - x1)
+                display_range = f"до {int(x1)//1000} тыс. руб. (экстраполяция)"
+                # Защита от отрицательной стоимости (на всякий случай)
+                cost = max(cost, 0)
+                return round(float(cost), 2), display_range
+            else:
+                return float(ranges[0][1]), ranges[0][2]
             
         # Последний элемент - это inf ("over_..."), предпоследний - максимальный лимит.
         if len(ranges) >= 2 and cameral_sum >= ranges[-2][0]:
