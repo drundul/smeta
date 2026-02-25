@@ -1177,6 +1177,7 @@
   "template_categories": {
     "linear": "Линейные объекты",
     "building": "Здания и сооружения",
+    "line_power": "Энергетические объекты",
     "special": "Специальные объекты"
   },
   "additional_cost_types": {
