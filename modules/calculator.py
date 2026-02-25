@@ -83,6 +83,9 @@ class Estimate:
     price_index: Decimal = Decimal("1.0")
     additional_costs: list = field(default_factory=list)
     contract_coefficient: Decimal = Decimal("1.0")
+    base_city: str = "г. Санкт-Петербург"
+    work_region: str = ""
+    distance_km: int = 0
     
     @property
     def base_total(self) -> Decimal:

@@ -434,7 +434,7 @@
       "unit": "опред.",
       "category": "laboratory",
       "group": "soil_properties",
-      "table_ref": "Таблица 57, п. 4",
+      "table_ref": "Таблица 57, п. 2",
       "base_cost": 247
     },
     {
@@ -444,7 +444,7 @@
       "unit": "опред.",
       "category": "laboratory",
       "group": "soil_properties",
-      "table_ref": "Таблица 57, п. 6",
+      "table_ref": "Таблица 57, п. 3",
       "base_cost": 653
     },
     {
@@ -454,7 +454,7 @@
       "unit": "опред.",
       "category": "laboratory",
       "group": "soil_properties",
-      "table_ref": "Таблица 57, п. 7",
+      "table_ref": "Таблица 57, п. 17",
       "base_cost": 529
     },
     {
@@ -464,7 +464,7 @@
       "unit": "опред.",
       "category": "laboratory",
       "group": "soil_properties",
-      "table_ref": "Таблица 57, п. 9",
+      "table_ref": "Таблица 57, п. 4",
       "base_cost": 600
     },
     {
@@ -484,7 +484,7 @@
       "unit": "опред.",
       "category": "laboratory",
       "group": "soil_properties",
-      "table_ref": "Таблица 57, п. 14",
+      "table_ref": "Таблица 57, п. 19",
       "base_cost": 1358
     },
     {
@@ -494,7 +494,7 @@
       "unit": "опред.",
       "category": "laboratory",
       "group": "soil_properties",
-      "table_ref": "Таблица 57, п. 20",
+      "table_ref": "Таблица 57, п. 9",
       "base_cost": 670
     },
     {
@@ -504,7 +504,7 @@
       "unit": "опред.",
       "category": "laboratory",
       "group": "soil_properties",
-      "table_ref": "Таблица 57, п. 21",
+      "table_ref": "Таблица 57, п. 11",
       "base_cost": 1835
     },
     {
@@ -514,7 +514,7 @@
       "unit": "опред.",
       "category": "laboratory",
       "group": "soil_properties",
-      "table_ref": "Таблица 57, п. 23",
+      "table_ref": "Таблица 57, п. 13",
       "base_cost": 1676
     },
     {
@@ -524,7 +524,7 @@
       "unit": "опред.",
       "category": "laboratory",
       "group": "soil_properties",
-      "table_ref": "Таблица 57, п. 30",
+      "table_ref": "Таблица 57, п. 8",
       "base_cost": 370
     },
     {
@@ -534,7 +534,7 @@
       "unit": "опред.",
       "category": "laboratory",
       "group": "soil_properties",
-      "table_ref": "Таблица 57, п. 40",
+      "table_ref": "Таблица 57, п. 6",
       "base_cost": 670
     },
     {
@@ -544,7 +544,7 @@
       "unit": "опред.",
       "category": "laboratory",
       "group": "soil_properties",
-      "table_ref": "Таблица 57, п. 49",
+      "table_ref": "Таблица 57, п. 16",
       "base_cost": 4546
     },
     {

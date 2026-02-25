@@ -1332,6 +1332,9 @@ with tab4:
         estimate.contractor = st.session_state.project_info["contractor"]
         estimate.price_index = Decimal(str(current_index))
         estimate.contract_coefficient = Decimal(str(k_contract))
+        estimate.base_city = "г. Санкт-Петербург"
+        estimate.work_region = st.session_state.project_info.get("region", "")
+        estimate.distance_km = st.session_state.project_info.get("distance_km", 0)
         
         # ДЗ уже добавлены выше; повторный вызов не нужен
         

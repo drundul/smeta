@@ -43,28 +43,31 @@ def export_to_word(estimate, filename: str = None) -> Path:
     doc.add_paragraph()
     
     # Информация о проекте
-    info_table = doc.add_table(rows=6, cols=2)
     info_data = [
         ("Проект:", estimate.project_name),
         ("Шифр:", estimate.project_code or "-"),
         ("Объект:", estimate.object_name or "-"),
         ("Заказчик:", estimate.customer or "-"),
+        ("Подрядчик:", estimate.contractor or "-"),
+        ("Базовый город:", getattr(estimate, 'base_city', 'г. Санкт-Петербург')),
+        ("Регион производства работ:", getattr(estimate, 'work_region', '-') or '-'),
+        ("Расстояние до объекта:", f"{getattr(estimate, 'distance_km', '-')} км"),
         ("Дата:", estimate.date_created),
         ("Индекс пересчёта:", f"{float(estimate.price_index):.2f}"),
     ]
     
+    info_table = doc.add_table(rows=len(info_data), cols=2)
     for i, (label, value) in enumerate(info_data):
         info_table.rows[i].cells[0].text = label
         info_table.rows[i].cells[0].paragraphs[0].runs[0].bold = True
-        info_table.rows[i].cells[1].text = value
+        info_table.rows[i].cells[1].text = str(value)
     
-    info_table.columns[0].width = Cm(4)
-    info_table.columns[1].width = Cm(12)
+    info_table.columns[0].width = Cm(5)
+    info_table.columns[1].width = Cm(11)
     
     doc.add_paragraph()
     
-    # Основная таблица сметы
-    # Группируем по категориям
+    # Основная таблица сметы — группируем по категориям
     categories = {
         "field": {"name": "ПОЛЕВЫЕ РАБОТЫ", "items": []},
         "laboratory": {"name": "ЛАБОРАТОРНЫЕ РАБОТЫ", "items": []},
@@ -80,13 +83,25 @@ def export_to_word(estimate, filename: str = None) -> Path:
             categories["office"]["items"].append(item)
     
     # Подсчитываем количество строк
-    total_rows = 1  # Заголовок
+    total_rows = 1  # Заголовок таблицы
     for cat_data in categories.values():
         if cat_data["items"]:
             total_rows += 1  # Заголовок раздела
-            total_rows += len(cat_data["items"])  # Позиции
+            total_rows += len(cat_data["items"])
             total_rows += 1  # Подитог
-    total_rows += 2  # Итого + Всего
+    
+    # ДЗ строки
+    dz_costs = estimate.additional_costs or []
+    total_rows += 1  # Итого базовые
+    if dz_costs:
+        total_rows += 1  # Заголовок "Дополнительные затраты"
+        total_rows += len(dz_costs)
+        total_rows += 1  # Итого с ДЗ
+    
+    total_rows += 1  # Итого с индексом
+    if float(estimate.contract_coefficient) != 1.0:
+        total_rows += 1  # Кдог
+    total_rows += 1  # ВСЕГО
     
     table = doc.add_table(rows=total_rows, cols=7)
     table.style = 'Table Grid'
@@ -137,7 +152,13 @@ def export_to_word(estimate, filename: str = None) -> Path:
             row.cells[4].text = f"{float(item.quantity):.1f}"
             row.cells[4].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
             
-            row.cells[5].text = f"{float(item.unit_cost):,.0f}"
+            # Для рекогносцировки — показываем формулу
+            if float(item.pz1p_fixed) > 0:
+                pz1p = float(item.pz1p_fixed)
+                pz2p = float(item.base_cost)
+                row.cells[5].text = f"ПЗ1п({pz1p:,.0f})+ПЗ2п({pz2p:,.0f})"
+            else:
+                row.cells[5].text = f"{float(item.unit_cost):,.0f}"
             row.cells[5].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
             
             row.cells[6].text = f"{float(item.total_cost):,.0f}"
@@ -162,11 +183,11 @@ def export_to_word(estimate, filename: str = None) -> Path:
         set_cell_shading(row.cells[6], 'FFF3E0')
         current_row += 1
     
-    # Итого
+    # Итого базовые
     base_total = sum(float(item.total_cost) for item in estimate.items)
     row = table.rows[current_row]
     row.cells[0].merge(row.cells[5])
-    row.cells[0].text = "ИТОГО (в ценах на 01.01.2024):"
+    row.cells[0].text = "ИТОГО базовые затраты (СП + СЛ + СК):"
     row.cells[0].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
     row.cells[0].paragraphs[0].runs[0].bold = True
     
@@ -178,14 +199,100 @@ def export_to_word(estimate, filename: str = None) -> Path:
     set_cell_shading(row.cells[6], 'E8F5E9')
     current_row += 1
     
-    # Всего с индексом
+    # Дополнительные затраты
+    dz_sum = 0
+    if dz_costs:
+        row = table.rows[current_row]
+        row.cells[0].merge(row.cells[6])
+        row.cells[0].text = "Дополнительные затраты:"
+        row.cells[0].paragraphs[0].runs[0].bold = True
+        row.cells[0].paragraphs[0].runs[0].italic = True
+        current_row += 1
+        
+        for dz_num, cost in enumerate(dz_costs, 1):
+            row = table.rows[current_row]
+            
+            row.cells[0].text = f"ДЗ-{dz_num}"
+            row.cells[0].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
+            
+            row.cells[1].merge(row.cells[2])
+            row.cells[1].text = cost.get('name', 'ДЗ')
+            
+            row.cells[3].merge(row.cells[4])
+            row.cells[3].text = cost.get('basis', '-')
+            
+            row.cells[5].text = cost.get('formula', '-')
+            row.cells[5].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
+            
+            val = round(float(cost.get('value', 0)), 2)
+            dz_sum += val
+            row.cells[6].text = f"{val:,.0f}"
+            row.cells[6].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
+            
+            current_row += 1
+        
+        # Итого с ДЗ
+        total_with_dz = round(base_total + dz_sum, 2)
+        row = table.rows[current_row]
+        row.cells[0].merge(row.cells[5])
+        row.cells[0].text = "ИТОГО с учётом дополнительных затрат:"
+        row.cells[0].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
+        row.cells[0].paragraphs[0].runs[0].bold = True
+        
+        row.cells[6].text = f"{total_with_dz:,.0f}"
+        row.cells[6].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
+        row.cells[6].paragraphs[0].runs[0].bold = True
+        
+        set_cell_shading(row.cells[0], 'FFF3E0')
+        set_cell_shading(row.cells[6], 'FFF3E0')
+        current_row += 1
+    else:
+        total_with_dz = base_total
+    
+    # С индексом пересчёта
+    idx = float(estimate.price_index)
+    total_indexed = round(total_with_dz * idx, 2)
+    
     row = table.rows[current_row]
     row.cells[0].merge(row.cells[5])
-    row.cells[0].text = f"ВСЕГО с индексом пересчёта ({float(estimate.price_index):.2f}):"
+    row.cells[0].text = f"ИТОГО с индексом пересчёта ({idx:.2f}):"
     row.cells[0].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
     row.cells[0].paragraphs[0].runs[0].bold = True
     
-    row.cells[6].text = f"{float(estimate.total):,.0f}"
+    row.cells[6].text = f"{total_indexed:,.0f}"
+    row.cells[6].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    row.cells[6].paragraphs[0].runs[0].bold = True
+    
+    set_cell_shading(row.cells[0], 'E8F5E9')
+    set_cell_shading(row.cells[6], 'E8F5E9')
+    current_row += 1
+    
+    # Коэффициент договорной цены
+    k_contract = float(estimate.contract_coefficient)
+    if k_contract != 1.0:
+        final_total = round(total_indexed * k_contract, 2)
+        
+        row = table.rows[current_row]
+        row.cells[0].merge(row.cells[5])
+        row.cells[0].text = f"Коэффициент договорной цены ({k_contract:.3f}):"
+        row.cells[0].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
+        row.cells[0].paragraphs[0].runs[0].bold = True
+        
+        row.cells[6].text = f"{final_total:,.0f}"
+        row.cells[6].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
+        row.cells[6].paragraphs[0].runs[0].bold = True
+        current_row += 1
+    else:
+        final_total = total_indexed
+    
+    # ВСЕГО ПО СМЕТЕ
+    row = table.rows[current_row]
+    row.cells[0].merge(row.cells[5])
+    row.cells[0].text = "ВСЕГО по смете:"
+    row.cells[0].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    row.cells[0].paragraphs[0].runs[0].bold = True
+    
+    row.cells[6].text = f"{final_total:,.0f}"
     row.cells[6].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.RIGHT
     row.cells[6].paragraphs[0].runs[0].bold = True
     

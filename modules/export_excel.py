@@ -21,7 +21,7 @@ def export_to_excel(estimate, filename: str = None) -> Path:
     # Стили
     header_font = Font(bold=True, size=12)
     title_font = Font(bold=True, size=14)
-    money_format = '#,##0.00 ₽'
+    money_format = '#,##0'
     
     thin_border = Border(
         left=Side(style='thin'),
@@ -53,6 +53,9 @@ def export_to_excel(estimate, filename: str = None) -> Path:
         ("Заказчик:", estimate.customer or "-"),
         ("Подрядчик:", estimate.contractor or "-"),
         ("Дата:", estimate.date_created),
+        ("Базовый город:", getattr(estimate, 'base_city', 'г. Санкт-Петербург')),
+        ("Регион производства работ:", getattr(estimate, 'work_region', '-')),
+        ("Расстояние до объекта:", f"{getattr(estimate, 'distance_km', '-')} км"),
         ("Индекс пересчёта:", f"{float(estimate.price_index):.2f}"),
     ]
     
@@ -222,7 +225,7 @@ def export_to_excel(estimate, filename: str = None) -> Path:
             ws.cell(row=row, column=6).alignment = Alignment(horizontal='right')
             
             # 7. Стоимость
-            val = float(cost.get('value', 0))
+            val = round(float(cost.get('value', 0)), 2)
             dz_sum += val
             val_cell = ws.cell(row=row, column=7, value=val)
             val_cell.number_format = money_format
@@ -232,7 +235,7 @@ def export_to_excel(estimate, filename: str = None) -> Path:
             dz_item_num += 1
             
     # 3. Итого с учетом ДЗ
-    total_with_dz = base_total + dz_sum
+    total_with_dz = round(base_total + dz_sum, 2)
     row += 1
     ws.merge_cells(f'A{row}:F{row}')
     ws[f'A{row}'] = "ИТОГО с учетом дополнительных затрат:"
@@ -250,7 +253,7 @@ def export_to_excel(estimate, filename: str = None) -> Path:
     
     # 4. С индексом пересчета
     idx = float(estimate.price_index)
-    total_indexed = total_with_dz * idx
+    total_indexed = round(total_with_dz * idx, 2)
     
     row += 1
     ws.merge_cells(f'A{row}:F{row}')
@@ -280,7 +283,7 @@ def export_to_excel(estimate, filename: str = None) -> Path:
         
         # Здесь выводим просто сумму
         # Но если по образцу, то это применяется к итогу
-        final_total = total_indexed * k_contract
+        final_total = round(total_indexed * k_contract, 2)
         
         k_cell = ws.cell(row=row, column=7, value=final_total)
         k_cell.font = Font(bold=True)
