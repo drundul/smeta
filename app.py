@@ -1003,19 +1003,34 @@ with tab2:
         for i, item_data in enumerate(st.session_state.estimate_items):
             work_info = calc.get_work_type(item_data["work_id"])
             base_cost = calc.get_base_cost(item_data["work_id"])
+            report_ref = None  # Will be set if report cost is recalculated
             quantity = item_data["quantity"]
             
             # Если это отчёт - подменяем стоимость
             if work_info.get("group") == "report" and calculated_report_cost > 0:
                 base_cost = calculated_report_cost
                 
-                # Сохраняем рассчитанную стоимость в сессию, чтобы она была доступна для экспорта и ДЗ
+                # Находим правильный work_type отчёта по рассчитанной стоимости
+                correct_report_wt = None
+                for wt in calc.work_types.get("work_types", []):
+                    if wt.get("group") == "report" and wt.get("base_cost") == int(calculated_report_cost):
+                        correct_report_wt = wt
+                        break
+                
+                if correct_report_wt:
+                    # Подменяем work_id на правильный
+                    st.session_state.estimate_items[i]["work_id"] = correct_report_wt["id"]
+                    display_name = correct_report_wt["name"]
+                    report_ref = correct_report_wt.get("table_ref", "")
+                else:
+                    display_name = work_info.get("name", "Составление технического отчета по результатам выполнения работ по ИГИ")
+                    report_ref = work_info.get("table_ref", "")
+                
+                # Сохраняем рассчитанную стоимость в сессию
                 st.session_state.estimate_items[i]["override_base_cost"] = float(calculated_report_cost)
                 
                 quantity = 1 # Отчет всегда 1
                 total_cost = calculated_report_cost
-                # Берём официальное название из work_types.json
-                display_name = work_info.get("name", "Составление технического отчета по результатам выполнения работ по ИГИ")
                 calc_formula = f"{calculated_report_cost:,.0f} (Таблица 65, {complexity} кат., {range_desc})"
             else:
                 # Если это не отчет, убираем override (на случай если он был раньше)
@@ -1045,7 +1060,7 @@ with tab2:
                 "quantity": quantity,
                 "base_cost": float(base_cost),
                 "total_cost": total_cost,
-                "table_ref": work_info.get("table_ref", ""),
+                "table_ref": report_ref if report_ref else work_info.get("table_ref", ""),
                 "code": work_info.get("code", ""),
                 "category": work_info.get("category", "field"),
                 "formula_display": calc_formula
