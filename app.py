@@ -353,18 +353,22 @@ def calculate_additional_costs(field_cost: float, project_info: dict, lab_cost: 
     # Выбор таблицы коэффициентов по типу транспорта и зондирования
     if transport_type == "auto":
         if not has_static_sounding:
-            travel_table_key = "travel_costs_IZ"  # Таблица 4 (ИЗ, авто, без зондирования)
-            travel_table_name = "Таблица 16"
+            travel_table_key = "travel_costs_IZ"  # Таблица 4 (авто, без зондирования)
+            travel_table_name = "Таблица 4"
+            travel_paragraph = "п.29"
         else:
-            travel_table_key = "travel_costs_NZ"  # Таблица 5 (НЗ, авто, с зондированием)
-            travel_table_name = "Таблица 17"
+            travel_table_key = "travel_costs_NZ"  # Таблица 5 (авто, с зондированием)
+            travel_table_name = "Таблица 5"
+            travel_paragraph = "п.30"
     else:
         if not has_static_sounding:
             travel_table_key = "travel_costs_table6"  # Таблица 6 (не авто, без зондирования)
             travel_table_name = "Таблица 6"
+            travel_paragraph = "п.33"
         else:
             travel_table_key = "travel_costs_table7"  # Таблица 7 (не авто, с зондированием)
             travel_table_name = "Таблица 7"
+            travel_paragraph = "п.34"
     
     travel_coefs = coefficients.get(travel_table_key, {}).get("coefficients_by_distance_km", {})
     
@@ -451,7 +455,7 @@ def calculate_additional_costs(field_cost: float, project_info: dict, lab_cost: 
             "value": dz_unfav,
             "percent": unfav_percent,
             "basis": f"НЗ №281/пр, п.21, формула 4",
-            "formula": f"{field_cost:,.0f} × {unfav_percent/100:.4f}"
+            "formula": f"СПпз({field_cost:,.0f}) × {unfav_percent/100:.4f}"
         })
     
     if dz_regime > 0:
@@ -460,7 +464,7 @@ def calculate_additional_costs(field_cost: float, project_info: dict, lab_cost: 
             "value": dz_regime,
             "percent": regime_percent,
             "basis": f"НЗ №281/пр, п.26-27, формула 6",
-            "formula": f"{field_cost:,.0f} × {regime_percent/100:.2f}"
+            "formula": f"СПпз({field_cost:,.0f}) × {regime_percent/100:.2f}"
         })
     
     if dz_travel > 0:
@@ -469,8 +473,8 @@ def calculate_additional_costs(field_cost: float, project_info: dict, lab_cost: 
             "name": f"ДЗ на проезд ({travel_percent:.1f}%){interp_note}",
             "value": dz_travel,
             "percent": travel_percent,
-            "basis": f"НЗ №281/пр, {travel_table_name}",
-            "formula": f"{field_cost:,.0f} × {travel_percent/100:.4f}"
+            "basis": f"НЗ №281/пр, {travel_paragraph}, {travel_table_name} (расст. {distance} км, СПпз до {cost_key.replace('up_to_','').replace('k',' тыс.')})",
+            "formula": f"СПпз({field_cost:,.0f}) × {travel_percent/100:.4f}"
         })
     
     if dz_org > 0:
@@ -478,8 +482,8 @@ def calculate_additional_costs(field_cost: float, project_info: dict, lab_cost: 
             "name": f"ДЗ на организацию полевых работ ({org_percent}%)",
             "value": dz_org,
             "percent": org_percent,
-            "basis": f"НЗ №281/пр, п.37, Таблица 20",
-            "formula": f"{field_cost:,.0f} × {org_percent/100:.4f}"
+            "basis": f"НЗ №281/пр, п.37, ф.(9), Таблица 8 (расст. {distance} км, СПпз до {org_cost_key.replace('up_to_','').replace('k',' тыс.')})",
+            "formula": f"СПпз({field_cost:,.0f}) × {org_percent/100:.4f}"
         })
     
     if dz_rp > 0:
