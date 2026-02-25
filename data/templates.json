@@ -25,8 +25,8 @@
           "source": "СП 446.1325800.2019 п.7.2.5"
         },
         {
-          "item": "Лаборатория (УЭС)",
-          "requirement": "Определение УЭС и плотности катодного тока лабораторным методом (вместо полевого ВЭЗ). 4 определения на скважину (послойно через ~1 м).",
+          "item": "Лаборатория (УЭС и химия)",
+          "requirement": "Определение УЭС и коррозионной агрессивности проводится. Обоснование комплексной расценки УЭС (включая катодный ток) - Табл. 63 п. 5 НЗ. Отбирается 1 проба на скважину (достаточно для оценки по СП 446).",
           "source": "СП 446.1325800.2019 п.7.1.16.6, Приложение Л"
         },
         {
@@ -57,54 +57,55 @@
         },
         {
           "work_id": "lab_sample_prep",
-          "quantity": 4,
-          "description": "Приёмка образцов (4 обр. на точку, через ~1 м)",
+          "quantity": 3,
+          "description": "Приёмка образцов (3 обр. на точку)",
           "nz_ref": "Глава VII, Таблица 56",
           "per_support": true
         },
         {
           "work_id": "lab_sample_selection",
-          "quantity": 4,
+          "quantity": 3,
           "per_support": true
         },
         {
           "work_id": "lab_sample_description",
-          "quantity": 4,
+          "quantity": 3,
           "per_support": true
         },
         {
           "work_id": "lab_corrosion",
-          "quantity": 4,
-          "description": "УЭС + катодный ток (4 послойных определения на точку)",
+          "quantity": 1,
+          "description": "Определение УЭС + плотности катодного тока (1 определение на точку)",
           "nz_ref": "Глава VII, Таблица 63, п.5",
           "per_support": true
         },
         {
-          "work_id": "lab_moisture",
-          "quantity": 4,
-          "description": "Влажность (все образцы)",
-          "nz_ref": "Глава VII, Таблица 57",
+          "work_id": "lab_extract_corrosion",
+          "quantity": 1,
+          "description": "Лабораторные определения хим. свойств: водная вытяжка (1 на точку)",
+          "nz_ref": "Глава VII, Таблица 63, п.4",
           "per_support": true
         },
         {
-          "work_id": "lab_density_ring",
-          "quantity": 1,
-          "description": "Плотность кольцом (1 монолит на точку)",
+          "work_id": "lab_moisture",
+          "quantity": 3,
+          "description": "Лабораторные определения физических свойств: влажность (все образцы)",
           "nz_ref": "Глава VII, Таблица 57",
           "per_support": true
         },
         {
           "work_id": "lab_atterberg",
           "quantity": 2,
-          "description": "Границы пластичности (глинистые слои)",
+          "description": "Лабораторные определения физических свойств: границы пластичности (глинистые слои)",
           "nz_ref": "Глава VII, Таблица 57",
           "per_support": true
         },
         {
-          "work_id": "lab_extract_corrosion",
+          "work_id": "lab_grain_dry_sieve",
           "quantity": 1,
-          "description": "Водная вытяжка: pH, сульфаты, хлориды (1 раз на объект)",
-          "nz_ref": "Глава VII, Таблица 63, п.4"
+          "description": "Лабораторные определения физических свойств: грансостав ситовым методом (для песка)",
+          "nz_ref": "Глава VII, Таблица 57",
+          "per_support": true
         },
         {
           "work_id": "cameral_borehole_cat2",
@@ -116,17 +117,18 @@
         {
           "work_id": "cameral_lab_extract",
           "quantity": 1,
-          "description": "Камеральная обработка химии (вытяжка)"
+          "description": "Камеральная обработка химии (вытяжка)",
+          "per_support": true
         },
         {
           "work_id": "cameral_lab_corrosion",
-          "quantity": 4,
+          "quantity": 1,
           "description": "Камеральная обработка УЭС",
           "per_support": true
         },
         {
           "work_id": "cameral_lab_clay",
-          "quantity": 4,
+          "quantity": 3,
           "description": "Камеральная обработка физики",
           "per_support": true
         },
