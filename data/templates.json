@@ -38,7 +38,7 @@
       "items": [
         {
           "work_id": "recon_cat1_5ha",
-          "quantity": 1,
+          "quantity": 0.5,
           "description": "Рекогносцировочное обследование (1 раз на объект)"
         },
         {
@@ -73,7 +73,7 @@
           "per_support": true
         },
         {
-          "work_id": "lab_ues",
+          "work_id": "lab_corrosion",
           "quantity": 4,
           "description": "УЭС + катодный ток (4 послойных определения на точку)",
           "nz_ref": "Глава VII, Таблица 63, п.5",
@@ -101,10 +101,10 @@
           "per_support": true
         },
         {
-          "work_id": "lab_extract_full",
+          "work_id": "lab_extract_corrosion",
           "quantity": 1,
-          "description": "Водная вытяжка (1 раз на объект — агрессивность к бетону)",
-          "nz_ref": "Глава VII, Таблица 63"
+          "description": "Водная вытяжка: pH, сульфаты, хлориды (1 раз на объект)",
+          "nz_ref": "Глава VII, Таблица 63, п.4"
         },
         {
           "work_id": "cameral_borehole_cat2",
@@ -115,8 +115,14 @@
         },
         {
           "work_id": "cameral_lab_extract",
-          "quantity": 6,
-          "description": "Камеральная обработка химии (вытяжка + УЭС)"
+          "quantity": 1,
+          "description": "Камеральная обработка химии (вытяжка)"
+        },
+        {
+          "work_id": "cameral_lab_corrosion",
+          "quantity": 4,
+          "description": "Камеральная обработка УЭС",
+          "per_support": true
         },
         {
           "work_id": "cameral_lab_clay",
