@@ -554,12 +554,13 @@ with tab0:
                     
                     multiplier = 1
                     if has_per_support:
-                        st.markdown("**🔢 Количество опор:**")
+                        mult_label = template.get("multiplier_label", "Количество опор")
+                        st.markdown(f"**🔢 {mult_label}:**")
                         multiplier = st.number_input(
-                            "Количество опор", 
+                            mult_label, 
                             value=3, min_value=1, max_value=50, step=1,
                             key=f"mult_{template['id']}",
-                            help="Объемы бурения и лаборатории умножаются на количество опор. Программа и отчёт — 1 раз."
+                            help=f"Объемы бурения и лаборатории умножаются на {mult_label.lower()}. Программа и отчёт — 1 раз."
                         )
                         st.divider()
                     elif has_per_km:

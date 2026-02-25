@@ -7,81 +7,140 @@
   "templates": [
     {
       "id": "grounding_calculation",
-      "name": "Расчет заземления для энергетиков (1 точка)",
-      "description": "Распределение удельного сопротивления (УЭС) по глубине и коррозионной агрессивности.",
+      "name": "ИГИ для расчета заземления (на 1 точку)",
+      "description": "УЭС по глубине и коррозионная агрессивность. Расчет на 1 точку, количество задается пользователем.",
       "category": "line_power",
       "normative_docs": [
-        "СП 446.1325800.2019",
+        "СП 446.1325800.2019 — п.7.2.5, п.7.1.16.6, Приложение Л",
         "ГОСТ 9.602-2016"
       ],
       "default_params": {
         "complexity": "II"
       },
+      "multiplier_label": "Количество точек заземления",
+      "methodology": [
+        {
+          "item": "Бурение",
+          "requirement": "1 скважина 4 м ручным способом (диам. до 89 мм) на каждую точку заземления. Глубина определяется зоной промерзания + послойный отбор.",
+          "source": "СП 446.1325800.2019 п.7.2.5"
+        },
+        {
+          "item": "Лаборатория (УЭС)",
+          "requirement": "Определение УЭС и плотности катодного тока лабораторным методом (вместо полевого ВЭЗ). 4 определения на скважину (послойно через ~1 м).",
+          "source": "СП 446.1325800.2019 п.7.1.16.6, Приложение Л"
+        },
+        {
+          "item": "Обоснование 1 скважины на точку",
+          "requirement": "Для расчета заземления достаточно 1 скважины на точку — задача определить послойное распределение УЭС, а не геотехнические характеристики.",
+          "source": "СП 446.1325800.2019 п.7.2.5"
+        }
+      ],
       "items": [
         {
           "work_id": "recon_cat1_5ha",
-          "quantity": 1
+          "quantity": 1,
+          "description": "Рекогносцировочное обследование (1 раз на объект)"
         },
         {
           "work_id": "drill_manual_10m_cat2",
-          "quantity": 4
+          "quantity": 4,
+          "description": "1 скважина 4 м ручным способом (на 1 точку)",
+          "nz_ref": "Глава IV, Таблица 14",
+          "per_support": true
         },
         {
           "work_id": "hydrogeo_observation",
-          "quantity": 1
+          "quantity": 1,
+          "description": "Замер УГВ в скважине (1 на точку)",
+          "nz_ref": "Глава IV, Таблица 26",
+          "per_support": true
         },
         {
           "work_id": "lab_sample_prep",
-          "quantity": 4
+          "quantity": 4,
+          "description": "Приёмка образцов (4 обр. на точку, через ~1 м)",
+          "nz_ref": "Глава VII, Таблица 56",
+          "per_support": true
         },
         {
           "work_id": "lab_sample_selection",
-          "quantity": 4
+          "quantity": 4,
+          "per_support": true
         },
         {
           "work_id": "lab_sample_description",
-          "quantity": 4
+          "quantity": 4,
+          "per_support": true
         },
         {
           "work_id": "lab_ues",
-          "quantity": 4
-        },
-        {
-          "work_id": "lab_extract_full",
-          "quantity": 1
+          "quantity": 4,
+          "description": "УЭС + катодный ток (4 послойных определения на точку)",
+          "nz_ref": "Глава VII, Таблица 63, п.5",
+          "per_support": true
         },
         {
           "work_id": "lab_moisture",
-          "quantity": 4
+          "quantity": 4,
+          "description": "Влажность (все образцы)",
+          "nz_ref": "Глава VII, Таблица 57",
+          "per_support": true
         },
         {
           "work_id": "lab_density_ring",
-          "quantity": 1
+          "quantity": 1,
+          "description": "Плотность кольцом (1 монолит на точку)",
+          "nz_ref": "Глава VII, Таблица 57",
+          "per_support": true
         },
         {
           "work_id": "lab_atterberg",
-          "quantity": 2
+          "quantity": 2,
+          "description": "Границы пластичности (глинистые слои)",
+          "nz_ref": "Глава VII, Таблица 57",
+          "per_support": true
+        },
+        {
+          "work_id": "lab_extract_full",
+          "quantity": 1,
+          "description": "Водная вытяжка (1 раз на объект — агрессивность к бетону)",
+          "nz_ref": "Глава VII, Таблица 63"
         },
         {
           "work_id": "cameral_borehole_cat2",
-          "quantity": 4
+          "quantity": 4,
+          "description": "Камеральная обработка скважин",
+          "nz_ref": "Глава IV, Таблица 33",
+          "per_support": true
         },
         {
           "work_id": "cameral_lab_extract",
-          "quantity": 6
+          "quantity": 6,
+          "description": "Камеральная обработка химии (вытяжка + УЭС)"
         },
         {
           "work_id": "cameral_lab_clay",
-          "quantity": 4
+          "quantity": 4,
+          "description": "Камеральная обработка физики",
+          "per_support": true
         },
         {
           "work_id": "program_cat2_lt1ha_10m",
-          "quantity": 1
+          "quantity": 1,
+          "description": "Программа ИГИ (1 раз на объект)"
         },
         {
           "work_id": "report_cat2_20k",
-          "quantity": 1
+          "quantity": 1,
+          "description": "Технический отчёт (1 раз на объект)"
         }
+      ],
+      "notes": [
+        "Объемы на 1 точку заземления (per_support). При применении шаблона указать количество точек — объёмы умножаются автоматически.",
+        "Рекогносцировка, водная вытяжка, камералка химии, программа и отчёт — 1 раз на объект.",
+        "На 1 точку: 1 скв. 4 м (ручная), 4 образца (УЭС послойно + физика), 1 гидрогео.",
+        "УЭС определяется лабораторно (Таблица 63 НЗ), а не полевым ВЭЗ — п.7.1.16.6, Приложение Л СП 446.",
+        "Почему 4 пробы: учет послойного распределения + зона промерзания (0-1, 1-2, 2-3, 3-4 м)."
       ]
     },
     {
