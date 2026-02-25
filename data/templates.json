@@ -6,6 +6,85 @@
   },
   "templates": [
     {
+      "id": "grounding_calculation",
+      "name": "Расчет заземления для энергетиков (1 точка)",
+      "description": "Распределение удельного сопротивления (УЭС) по глубине и коррозионной агрессивности.",
+      "category": "line_power",
+      "normative_docs": [
+        "СП 446.1325800.2019",
+        "ГОСТ 9.602-2016"
+      ],
+      "default_params": {
+        "complexity": "II"
+      },
+      "items": [
+        {
+          "work_id": "recon_cat1_5ha",
+          "quantity": 1
+        },
+        {
+          "work_id": "drill_manual_10m_cat2",
+          "quantity": 4
+        },
+        {
+          "work_id": "hydrogeo_observation",
+          "quantity": 1
+        },
+        {
+          "work_id": "lab_sample_prep",
+          "quantity": 4
+        },
+        {
+          "work_id": "lab_sample_selection",
+          "quantity": 4
+        },
+        {
+          "work_id": "lab_sample_description",
+          "quantity": 4
+        },
+        {
+          "work_id": "lab_ues",
+          "quantity": 4
+        },
+        {
+          "work_id": "lab_extract_full",
+          "quantity": 1
+        },
+        {
+          "work_id": "lab_moisture",
+          "quantity": 4
+        },
+        {
+          "work_id": "lab_density_ring",
+          "quantity": 1
+        },
+        {
+          "work_id": "lab_atterberg",
+          "quantity": 2
+        },
+        {
+          "work_id": "cameral_borehole_cat2",
+          "quantity": 4
+        },
+        {
+          "work_id": "cameral_lab_extract",
+          "quantity": 6
+        },
+        {
+          "work_id": "cameral_lab_clay",
+          "quantity": 4
+        },
+        {
+          "work_id": "program_cat2_lt1ha_10m",
+          "quantity": 1
+        },
+        {
+          "work_id": "report_cat2_20k",
+          "quantity": 1
+        }
+      ]
+    },
+    {
       "id": "gnb_cpt",
       "name": "ГНБ с зондированием (CPT)",
       "description": "ИГИ для перехода ГНБ с комплексом бурение + статическое зондирование (СП 341, ГОСТ 19912)",
