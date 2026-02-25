@@ -963,15 +963,28 @@ with tab2:
             if 'program' not in i.get("work_id", "")
         ]
         
-        # Добавляем программу в конец (секция камеральных)
+        # Вставляем программу ПЕРЕД отчётом (логичный порядок: программа → камеральные → отчёт)
         program_info = calc.get_work_type(auto_program_id)
         if program_info:
-            st.session_state.estimate_items.append({
+            program_item = {
                 "work_id": auto_program_id,
                 "quantity": 1,
                 "additional_coefficients": {},
                 "uid": "prog_auto"
-            })
+            }
+            
+            # Ищем позицию отчёта
+            report_idx = -1
+            for idx, item in enumerate(st.session_state.estimate_items):
+                wt = calc.get_work_type(item.get("work_id", ""))
+                if wt and wt.get("group") == "report":
+                    report_idx = idx
+                    break
+            
+            if report_idx >= 0:
+                st.session_state.estimate_items.insert(report_idx, program_item)
+            else:
+                st.session_state.estimate_items.append(program_item)
         
         # 1. Сначала считаем сумму камеральных работ (без отчёта и программы)
         cameral_base_sum = 0
