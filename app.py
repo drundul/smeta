@@ -1001,8 +1001,8 @@ with tab2:
             grp = work_info.get("group", "")
             cat = work_info.get("category", "")
             
-            # Считаем базу: это всё "офисное" (камеральное), включая Программу, но кроме самого Отчёта
-            if cat == "office" and grp != "report":
+            # Считаем базу (согласно Примечанию 2 к Табл. 65 стоимость программы не учитывается)
+            if cat == "office" and grp not in ("report", "program"):
                  base_c = float(calc.get_base_cost(item_data["work_id"]))
                  cameral_base_sum += base_c * item_data["quantity"]
             
