@@ -1017,14 +1017,16 @@
           "quantity": 4,
           "override_base_cost": null,
           "formula": null,
-          "additional_coefficients": {}
+          "additional_coefficients": {},
+          "per_support": true
         },
         {
           "work_id": "lab_sample_description",
           "quantity": 4,
           "override_base_cost": null,
           "formula": null,
-          "additional_coefficients": {}
+          "additional_coefficients": {},
+          "per_support": true
         },
         {
           "work_id": "lab_moisture",
@@ -1066,7 +1068,8 @@
           "quantity": 4,
           "override_base_cost": null,
           "formula": null,
-          "additional_coefficients": {}
+          "additional_coefficients": {},
+          "per_support": true
         },
         {
           "work_id": "report_cat2_20k",
