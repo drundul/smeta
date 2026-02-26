@@ -1016,10 +1016,11 @@ with tab2:
         if report_item_index >= 0:
             complexity = st.session_state.project_info.get("complexity", "II")
             # Считаем стоимость отчёта с учётом интерполяции (по Таблице 65)
-            calculated_report_cost, range_desc = calc.calculate_report_cost(cameral_base_sum, complexity)
+            calculated_report_cost, range_desc, upper_key = calc.calculate_report_cost(cameral_base_sum, complexity)
         else:
             calculated_report_cost = 0
             range_desc = ""
+            upper_key = ""
             complexity = "II"
 
         for i, item_data in enumerate(st.session_state.estimate_items):
@@ -1028,16 +1029,29 @@ with tab2:
             report_ref = None  # Will be set if report cost is recalculated
             quantity = item_data["quantity"]
             
-            # Если это отчёт - подменяем стоимость
+            # Если это отчёт - подменяем стоимость и название
             if work_info.get("group") == "report" and calculated_report_cost > 0:
                 base_cost = calculated_report_cost
                 
-                # Попытка найти точную (табличную) расценку отчёта для замены work_id (сработает для крайних без интерполяции)
+                # Ищем базовую расценку, соответствующую верхней границе интерполяции
+                # чтобы взять оттуда актуальное "имя" и "код"
                 correct_report_wt = None
+                
+                # Для Таблицы 65 I кат: "report_cat1_{key}", II кат: "report_cat2_{key}" и т.д.
+                cat_num = "1" if complexity == "I" else ("3" if complexity == "III" else "2")
+                target_report_id = f"report_cat{cat_num}_{upper_key}"
+                
                 for wt in calc.work_types.get("work_types", []):
-                    if wt.get("group") == "report" and wt.get("base_cost") == int(calculated_report_cost):
+                    if wt.get("id") == target_report_id:
                         correct_report_wt = wt
                         break
+                        
+                # Если не нашли по точному ID (например "up_to_20k" id может называться "20k"), то ищем первое подходящее
+                if not correct_report_wt:
+                     for wt in calc.work_types.get("work_types", []):
+                        if wt.get("group") == "report" and wt.get("base_cost") == int(calculated_report_cost):
+                            correct_report_wt = wt
+                            break
                 
                 if correct_report_wt:
                     # Подменяем work_id на правильный
@@ -1045,7 +1059,7 @@ with tab2:
                     display_name = correct_report_wt["name"]
                     report_ref = correct_report_wt.get("table_ref", "")
                 else:
-                    display_name = work_info.get("name", "Составление технического отчета по результатам выполнения работ по ИГИ")
+                    display_name = f"Составление технического отчета по результатам выполнения работ по ИГИ (ИГУ {complexity} кат., {range_desc.replace(' (интерполяция)','')})"
                     report_ref = work_info.get("table_ref", "")
                 
                 # Сохраняем рассчитанную стоимость в сессию
